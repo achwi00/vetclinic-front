@@ -1,0 +1,66 @@
+:root{
+    --main-color: #F9F0F3;
+    --lively-pink: #B9466C;
+    --washed-out-pink: #f3e2e8;
+    --plum: #6F2A41;
+}
+@font-face {
+    font-family: 'Handwriting'; /* Choose a name for your font */
+    src: url('../public/bright.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#cat-holder{
+    height: 100%;
+    width: 70%;
+    /*background-image: url("../public/group.svg");*/
+    /*background-size: contain;*/
+    /*background-repeat: no-repeat;*/
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+.welcome-text{
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 70%;
+}
+#welcome-msg{
+    font-family: 'Handwriting', sans-serif;
+    font-size: 6em;
+    color: var(--plum);
+    margin: 0;
+}
+#description-msg{
+    width: 70%;
+    font-weight: normal;
+}
+#learn-more-holder{
+    display: flex;
+    justify-content: right;
+}
+.learn-more-btn{
+    background-color: var(--main-color);
+    color: var(--lively-pink);
+    border: solid 3px;
+    border-color: var(--lively-pink);
+    border-radius: 30px;
+    height: 6vh;
+    width: 15vw;
+    font-size: x-large;
+}
+.learn-more-btn:hover{
+    background-color: var(--lively-pink);
+    color: white;
+    border: solid 3px;
+    border-color: var(--lively-pink);
+}
+.center-line{
+    background-color: black;
+    height: 1px;
+    width: 80%;
+}

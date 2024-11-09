@@ -10,7 +10,7 @@ function UpperMenu() {
     ]
     return(
         <div className="upper-menu">
-            <div className="centring-content">
+            <div className="centring-content in-between">
                 <div className="logo-holder">Logo</div>
                 <div className="upper-menu-buttons-holder">
                     {buttons.map((button, index) => (
