@@ -4,13 +4,18 @@
   --washed-out-pink: #f3e2e8;
   --plum: #6F2A41;
 }
-
+@font-face {
+  font-family: 'Giulia'; /* Choose a name for your font */
+  src: url('../public/giulia.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   background-color: var(--main-color);
-  font-family: giulia-plain, sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 600;
   -webkit-font-smoothing: antialiased;
@@ -18,6 +23,13 @@ body {
 }
 a{
   text-decoration: none;
+}
+h1{
+  color: var(--plum);
+}
+h2{
+  margin: 0 0 2% 0;
+  font-weight: normal;
 }
 .upper-menu{
   display: flex;
@@ -27,6 +39,7 @@ a{
   top: 0;
   height: 10vh;
   width: 100%;
+  background-color: var(--main-color);
 }
 .main{
   display: flex;
@@ -34,13 +47,20 @@ a{
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80vh;
+  min-height: 90vh;
 }
 .centring-content{
   display: flex;
   flex-direction: row;
   width: 90%;
   height: 90%;
+}
+.centring-content-column{
+  display:flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  justify-content: space-evenly;
 }
 .in-between{
   justify-content: space-between;
@@ -81,4 +101,11 @@ a{
   height: 4vh;
   width: 8vw;
   font-size: large;
+}
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 30px;
 }
