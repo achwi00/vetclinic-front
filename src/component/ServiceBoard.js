@@ -4,12 +4,12 @@ import Box from "./Box";
 
 function ServiceBoard(){
     const serviceBoxes = [
-        {title: 'Checkups', descrPart1: 'Lorem ipsum dolor.'},
-        {title: 'Vaccinations', descrPart1: 'Lorem ipsum dolor.'},
-        {title: 'Surgeries', descrPart1: 'Lorem ipsum dolor.'},
-        {title: 'Prescriptions', descrPart1: 'Lorem ipsum dolor.'},
-        {title: 'Support for animal groups', descrPart1: 'Lorem ipsum dolor.'},
-        {title: 'Chipping', descrPart1: 'Lorem ipsum dolor.'},
+        {iconName: 'checkup',title: 'Checkups', descrPart1: 'Lorem ipsum dolor.'},
+        {iconName: 'vaccine',title: 'Vaccinations', descrPart1: 'Lorem ipsum dolor.'},
+        {iconName: 'surgery',title: 'Surgeries', descrPart1: 'Lorem ipsum dolor.'},
+        {iconName: 'medicine',title: 'Prescriptions', descrPart1: 'Lorem ipsum dolor.'},
+        {iconName: 'support',title: 'Support for animal groups', descrPart1: 'Lorem ipsum dolor.'},
+        {iconName: 'chip',title: 'Chipping', descrPart1: 'Lorem ipsum dolor.'},
     ]
     return(
         <div className="main">
@@ -23,6 +23,8 @@ function ServiceBoard(){
                         <Box
                             key={index}
                             title={box.title}
+                            iconName={box.iconName}
+                            iconStyle="service-icon"
                             descrPart1={box.descrPart1}
                             styleClass="box service"
                             titleStyle="service-title"
