@@ -110,3 +110,7 @@ h2{
   background-color: white;
   border-radius: 30px;
 }
+.site-tracker{
+  font-weight: bold;
+  font-size: 2vh;
+}

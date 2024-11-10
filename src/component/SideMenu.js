@@ -5,8 +5,8 @@ import RoundButton from "./RoundButton";
 function SideMenu(){
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
-        {label: 'My pets', href:'#'},
-        {label: 'My pet groups', href:'#'},
+        {label: 'My pets', href:'/dashboard/my-pets'},
+        {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
         {label: 'Visits', href:'#'},
     ]
     return(
