@@ -1,0 +1,76 @@
+:root{
+    --main-color: #F9F0F3;
+    --lively-pink: #B9466C;
+    --washed-out-pink: #f3e2e8;
+    --plum: #6F2A41;
+    --almost-white: #FCF9FA;
+    --violet-pink: #D99CB0;
+}
+.all-holder{
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.side-menu-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 25%;
+    background-color: var(--almost-white);
+}
+.centring-panel{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 85%;
+    height: 90%;
+}
+.side-menu-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+}
+.bottom-panel-holder{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+    background-color: blue;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 50%;
+}
+.side-menu-button{
+    width: 100%;
+    height: 4.5vh;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5vh;
+    font-weight: bold;
+    color: var(--plum);
+    text-align: justify;
+    padding-left: 1vw;
+
+}
+.default-button{
+    background-color: var(--almost-white);
+}
+.default-button:hover{
+    background-color: var(--washed-out-pink);
+}
+.home-button{
+    background-color: var(--violet-pink);
+}
+.content-holder{
+    height: 100%;
+    width: 75%;
+}

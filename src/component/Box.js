@@ -1,5 +1,5 @@
 import React from "react";
-import '../services.css';
+import '../styles/services.css';
 import IconDisplayer from "./IconDisplayer";
 
 function Box({iconName, iconStyle, title, descrPart1, descrPart2, styleClass, titleStyle, descrStyle}){

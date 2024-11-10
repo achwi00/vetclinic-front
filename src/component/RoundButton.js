@@ -1,8 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function RoundButton({label, href, styleClass}){
-    return(
-        <a href={href}>
+    const isInternalLink = href && href.startsWith('/')
+    return isInternalLink ? (
+        <Link to={href} className={styleClass}>
+            <button className={styleClass}>
+                {label}
+            </button>
+        </Link>
+    ) : (
+        <a href={href} className={styleClass}>
             <button className={styleClass}>
                 {label}
             </button>

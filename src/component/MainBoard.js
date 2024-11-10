@@ -1,5 +1,5 @@
 import React from 'react';
-import '../main-board.css';
+import '../styles/main-board.css';
 import RoundButton from "./RoundButton";
 
 function MainBoard(){

@@ -6,7 +6,7 @@
 }
 @font-face {
     font-family: 'Handwriting'; /* Choose a name for your font */
-    src: url('../public/bright.ttf') format('truetype');
+    src: url('../../public/bright.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -51,7 +51,7 @@ img{
     border-radius: 30px;
     height: 6vh;
     width: 15vw;
-    font-size: x-large;
+    font-size: 1.5rem;
 }
 .learn-more-btn:hover{
     background-color: var(--lively-pink);
