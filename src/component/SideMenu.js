@@ -30,7 +30,14 @@ function SideMenu(){
                     </div>
                 </div>
                 <div className="bottom-panel-holder">
-
+                    <div className="msg">
+                        <h3>Hello, Name</h3>
+                    </div>
+                    <RoundButton
+                        label="log out"
+                        href={"#"}
+                        styleClass="log-out-btn"
+                    />
                 </div>
               </div>
           </div>

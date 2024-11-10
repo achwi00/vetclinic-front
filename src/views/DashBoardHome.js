@@ -8,7 +8,9 @@ function DashBoardHome(){
         <div className="all-holder">
             <SideMenu/>
             <div className="content-holder">
+                <div className="centring-main">
 
+                </div>
             </div>
         </div>
     );
