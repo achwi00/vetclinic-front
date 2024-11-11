@@ -9,6 +9,7 @@ function IconDisplayer({iconName, styleClass}){
         chip: "../icons/chip-heart.svg",
         medicine: "../icons/medicine-heart.svg",
         support: "../icons/support-heart.svg",
+        cat: "../icons/cat-icon.svg",
     };
     const iconPath = iconMap[iconName];
     return (

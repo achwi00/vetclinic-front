@@ -23,6 +23,7 @@
 }
 .right-log{
     width: 50%;
+    padding-top: 15%;
 }
 .centring-log-register{
     display: flex;
@@ -59,4 +60,52 @@
 .paw-register img{
     height: 100%;
     width: 60%;
+}
+.formsHolder{
+    display: flex;
+    height: 35%;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.formsHolder form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    color: var(--violet-pink);
+    font-weight: normal;
+}
+.forms-icon{
+    height: 7vh;
+    width: 10vw;
+}
+.formInputs{
+    width: 100%;
+    height: 4.5vh;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding-left: 1%;
+}
+.formInputs::placeholder{
+
+    color:var(--violet-pink);
+}
+.credentials{
+    background-color: white;
+    color: var(--violet-pink);
+}
+.credentials:focus{
+    border: solid var(--violet-pink) 2px;
+}
+.form-btn{
+    background-color: var(--lively-pink);
+    color: white;
+    font-size: 2vh;
+}
+.form-btn:hover{
+   background-color: var(--plum);
 }

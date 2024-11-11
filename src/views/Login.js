@@ -1,7 +1,12 @@
 import React from "react";
 import '../../src/styles/login-register.css'
+import Form from "../component/Form";
 
 function Login(){
+    const formFields = [
+        { name: 'email', placeholder:'email', type: 'email', required: true },
+        { name: 'password', placeholder:'password', type: 'password', required: true },
+    ]
     return(
         <div className="all-holder">
             <div className="log-register-containers left-log">
@@ -16,7 +21,13 @@ function Login(){
                 </div>
             </div>
             <div className="log-register-containers right-log">
-
+                <Form
+                    fields={formFields}
+                    onSubmitEndpoint={"#"}
+                    inputStyle="formInputs credentials"
+                    buttonMsg="log in"
+                    buttonClass="formInputs form-btn"
+                />
             </div>
         </div>
     );
