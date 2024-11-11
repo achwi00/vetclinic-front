@@ -24,6 +24,7 @@ function Login(){
                 <Form
                     fields={formFields}
                     onSubmitEndpoint={"#"}
+                    styleClass="formsHolder"
                     inputStyle="formInputs credentials"
                     buttonMsg="log in"
                     buttonClass="formInputs form-btn"

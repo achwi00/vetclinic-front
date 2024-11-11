@@ -3,7 +3,7 @@ import IconDisplayer from "./IconDisplayer";
 import { useNavigate } from 'react-router-dom';
 import '../../src/styles/login-register.css'
 
-function Form({ fields, onSubmitEndpoint, inputStyle, buttonMsg, buttonClass }){
+function Form({ fields, onSubmitEndpoint, inputStyle, buttonMsg, buttonClass, styleClass }){
     // State to manage form data
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ function Form({ fields, onSubmitEndpoint, inputStyle, buttonMsg, buttonClass }){
     };
 
    return(
-       <div className="formsHolder">
+       <div className={styleClass}>
             <IconDisplayer
                 iconName="cat"
                 styleClass="forms-icon"

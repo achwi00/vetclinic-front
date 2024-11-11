@@ -12,6 +12,7 @@
 }
 .left-register{
     width: 60%;
+    align-items: center;
 }
 .right-register{
     width: 40%;
@@ -46,6 +47,7 @@
 }
 .log-register-info p{
     font-weight: normal;
+    margin-bottom: 6%;
 }
 .paw-holder{
     height: 45%;
@@ -68,6 +70,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.formsHolderRegister{
+    height: 45%;
 }
 .formsHolder form{
     display: flex;
