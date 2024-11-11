@@ -7,12 +7,14 @@ import DashboardNewVisit from "./views/DashboardNewVisit";
 import DashboardMyPets from "./views/DashboardMyPets";
 import DashboardMyPetGroups from "./views/DashboardMyPetGroups";
 import Register from "./views/Register";
+import TestView from "./views/TestView";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<MainPage/>}/>
+        <Route path="/test" element={<TestView/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/dashboard/home" element={<DashBoardHome />}/>
