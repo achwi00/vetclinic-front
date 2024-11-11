@@ -16,6 +16,7 @@ function SideMenu(){
                 <div className="side-menu-panel">
                     <RoundButton
                         label="Home"
+                        href='/dashboard/home'
                         styleClass="side-menu-button home-button"
                     />
                     <div className="options">

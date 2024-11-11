@@ -6,13 +6,6 @@
     --almost-white: #FCF9FA;
     --violet-pink: #D99CB0;
 }
-.all-holder{
-    margin: 0;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
 .side-menu-holder{
     display: flex;
     align-items: center;

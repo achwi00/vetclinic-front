@@ -1,0 +1,62 @@
+:root{
+    --main-color: #F9F0F3;
+    --lively-pink: #B9466C;
+    --washed-out-pink: #f3e2e8;
+    --plum: #6F2A41;
+    --almost-white: #FCF9FA;
+}
+.log-register-containers{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.left-register{
+    width: 60%;
+}
+.right-register{
+    width: 40%;
+    background-color: var(--violet-pink);
+}
+.left-log{
+    width: 50%;
+    background-color: var(--violet-pink);
+}
+.right-log{
+    width: 50%;
+}
+.centring-log-register{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    height: 100%;
+}
+.in-between{
+    justify-content: space-between;
+}
+.log-register-info{
+    display: flex;
+    flex-direction: column;
+}
+.log-register-info h1{
+    font-family: Giulia,sans-serif;
+    color: var(--plum);
+    font-size: 10vh;
+    margin-bottom: 2%;
+}
+.log-register-info p{
+    font-weight: normal;
+}
+.paw-holder{
+    height: 45%;
+    width: 50%;
+}
+.paw-register{
+    display: flex;
+    height: 40%;
+    width: 100%;
+    justify-content: right;
+}
+.paw-register img{
+    height: 100%;
+    width: 60%;
+}
