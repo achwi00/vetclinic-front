@@ -3,9 +3,9 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import MainPage from './views/MainPage'
 import Login from './views/Login'
 import DashBoardHome from './views/DashBoardHome'
-import DashboardNewVisit from "./views/DashboardNewVisit";
-import DashboardMyPets from "./views/DashboardMyPets";
-import DashboardMyPetGroups from "./views/DashboardMyPetGroups";
+import DashboardNewVisit from "./views/user_dashboard/DashboardNewVisit";
+import DashboardMyPets from "./views/user_dashboard/DashboardMyPets";
+import DashboardMyPetGroups from "./views/user_dashboard/DashboardMyPetGroups";
 import Register from "./views/Register";
 import TestView from "./views/TestView";
 
