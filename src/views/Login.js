@@ -42,7 +42,8 @@ function Login() {
 
                 if (roleResponse.ok) {
                     const roleData = await roleResponse.text();
-                    setUser({ email: uMail, role: roleData.role });
+                    console.log(roleData.role);
+                    setUser({ email: uMail, role: roleData});
                     navigate('/dashboard/home');
                 } else {
                     console.error("Failed to fetch user role");

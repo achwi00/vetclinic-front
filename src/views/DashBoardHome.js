@@ -6,7 +6,13 @@ import {UserContext} from "../UserContext";
 
 function DashBoardHome(){
     const {user} = useContext(UserContext);
-
+    useEffect(() => {
+        console.log(user.role);
+        const setMenuBasedOnRole = () => {
+            console.log(user.role);
+            }
+        }
+    );
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
         {label: 'My pets', href:'/dashboard/my-pets'},
