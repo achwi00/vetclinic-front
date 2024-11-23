@@ -42,7 +42,7 @@ function Login() {
 
                 if (roleResponse.ok) {
                     const roleData = await roleResponse.text();
-                    console.log(roleData.role);
+                    console.log(roleData);
                     setUser({ email: uMail, role: roleData});
                     navigate('/dashboard/home');
                 } else {

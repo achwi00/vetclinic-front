@@ -1,24 +1,32 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import '../index.css'
 import '../../src/styles/dashboard.css'
 import SideMenu from "../component/SideMenu";
 import {UserContext} from "../UserContext";
 
 function DashBoardHome(){
-    const {user} = useContext(UserContext);
-    useEffect(() => {
-        console.log(user.role);
-        const setMenuBasedOnRole = () => {
-            console.log(user.role);
-            }
+    const {user} = useContext(UserContext);//destukturyzacja obiektu zwórconego s usecontext
+
+    function returnButtons(user){
+        const {role} = user;
+        switch (role) {
+            case 'CLIENT':
+                return [
+                    {label: 'New visit', href:'/dashboard/new-visit'},
+                    {label: 'My pets', href:'/dashboard/my-pets'},
+                    {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
+                    {label: 'Visits', href:'#'},
+                ]
+            case 'VET':
+                return [
+                    {label: 'Visits', href:'#'},
+                ]
+            default:
+                return []
         }
-    );
-    const buttons = [
-        {label: 'New visit', href:'/dashboard/new-visit'},
-        {label: 'My pets', href:'/dashboard/my-pets'},
-        {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
-        {label: 'Visits', href:'#'},
-    ]
+    }
+    const buttons = returnButtons(user);
+
     return(
         <div className="all-holder">
             <SideMenu buttons={buttons}/>
