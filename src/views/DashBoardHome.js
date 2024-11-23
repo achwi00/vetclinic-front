@@ -5,7 +5,7 @@ import SideMenu from "../component/SideMenu";
 import {UserContext} from "../UserContext";
 
 function DashBoardHome(){
-    const {user} = useContext(UserContext);//destukturyzacja obiektu zwórconego s usecontext
+    const {user} = useContext(UserContext);
 
     function returnButtons(user){
         const {role} = user;
@@ -19,7 +19,9 @@ function DashBoardHome(){
                 ]
             case 'VET':
                 return [
-                    {label: 'Visits', href:'#'},
+                    {label: 'My data', href:'#'},
+                    {label: 'Incoming visits', href:'#'},
+                    {label: 'My schedule', href:'#'},
                 ]
             default:
                 return []
