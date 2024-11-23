@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import '../../src/styles/login-register.css';
 import Form from "../component/Form";
+import { UserContext } from "../UserContext";
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
 
     const formFields = [
@@ -12,11 +14,12 @@ function Login() {
     ];
 
     const handleFormSubmit = async (formData) => {
-        console.log("Submitted data:", formData);
+        const uMail = formData.email;
+        console.log("Submitted mail:", uMail);
 
         const urlEncodedData = new URLSearchParams({
-            username: formData.email, // Map email to 'username'
-            password: formData.password, // Keep 'password' as is
+            username: formData.email,
+            password: formData.password,
         }).toString();
 
         try {
@@ -29,7 +32,24 @@ function Login() {
             });
 
             if (response.ok) {
-                navigate('/dashboard/home'); // Navigate to the dashboard
+
+                //.............
+                const roleResponse = await fetch('http://localhost:8080/role', {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: uMail,// Include the session cookie (JSESSIONID)
+                });
+
+                if (roleResponse.ok) {
+                    const roleData = await roleResponse.text();
+                    setUser({ email: uMail, role: roleData.role }); // Store email and role in the context
+                    navigate('/dashboard/home'); // Navigate to the dashboard
+                } else {
+                    console.error("Failed to fetch user role");
+                }
+                //.............
+
+                //navigate('/dashboard/home');// Navigate to the dashboard
             } else {
                 console.error("Login failed");
             }
