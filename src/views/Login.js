@@ -37,19 +37,18 @@ function Login() {
                 const roleResponse = await fetch('http://localhost:8080/role', {
                     method: 'POST',
                     credentials: 'include',
-                    body: uMail,// Include the session cookie (JSESSIONID)
+                    body: uMail,
                 });
 
                 if (roleResponse.ok) {
                     const roleData = await roleResponse.text();
-                    setUser({ email: uMail, role: roleData.role }); // Store email and role in the context
-                    navigate('/dashboard/home'); // Navigate to the dashboard
+                    setUser({ email: uMail, role: roleData.role });
+                    navigate('/dashboard/home');
                 } else {
                     console.error("Failed to fetch user role");
                 }
                 //.............
 
-                //navigate('/dashboard/home');// Navigate to the dashboard
             } else {
                 console.error("Login failed");
             }
@@ -74,7 +73,7 @@ function Login() {
             <div className="log-register-containers right-log">
                 <Form
                     fields={formFields}
-                    onFormSubmit={handleFormSubmit} // Pass the form submit handler
+                    onFormSubmit={handleFormSubmit}
                     styleClass="formsHolder"
                     inputStyle="formInputs credentials"
                     buttonMsg="log in"
