@@ -79,6 +79,7 @@ function Login() {
                     inputStyle="formInputs credentials"
                     buttonMsg="log in"
                     buttonClass="formInputs form-btn"
+                    showIcon={true}
                 />
             </div>
         </div>

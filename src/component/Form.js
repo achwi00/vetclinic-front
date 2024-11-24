@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IconDisplayer from "./IconDisplayer";
 
-function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleClass }) {
+function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleClass, showIcon }) {
     const [formData, setFormData] = useState(
         fields.reduce((acc, field) => ({ ...acc, [field.name]: '' }), {})
     );
@@ -23,7 +23,7 @@ function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleC
 
     return (
         <div className={styleClass}>
-            <IconDisplayer iconName="cat" styleClass="forms-icon" />
+            {showIcon && <IconDisplayer iconName="cat" styleClass="forms-icon" />}
             <form onSubmit={handleSubmit}>
                 {fields.map((field, index) => (
                     <div key={index} className="form-group">

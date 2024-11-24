@@ -19,6 +19,7 @@ function Register(){
                     inputStyle="formInputs credentials"
                     buttonMsg="log in"
                     buttonClass="formInputs form-btn"
+                    showIcon={true}
                 />
             </div>
             <div className="log-register-containers right-register">

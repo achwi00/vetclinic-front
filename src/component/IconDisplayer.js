@@ -10,6 +10,7 @@ function IconDisplayer({iconName, styleClass}){
         medicine: "../icons/medicine-heart.svg",
         support: "../icons/support-heart.svg",
         cat: "../icons/cat-icon.svg",
+        group: "../icons/group_pet.svg"
     };
     const iconPath = iconMap[iconName];
     return (
