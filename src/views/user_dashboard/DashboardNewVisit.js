@@ -4,6 +4,7 @@ import List from "../../component/List";
 import IconDisplayer from "../../component/IconDisplayer";
 import Form from "../../component/Form";
 import {UserContext} from "../../UserContext";
+import Visit from "../../component/Visit";
 
 function DashboardNewVisit(){
     // State to track view and form data
@@ -67,7 +68,16 @@ function DashboardNewVisit(){
                             </div>
                         </div>
                     }
-                    {view === "visits" && <List items={visits}/>}
+                    {/*{view === "visits" && <List items={visits}/>}*/}
+                    {view === "visits" && <Visit
+                        date="2024-12-12"
+                        time="14:30"
+                        vetName="Mary"
+                        vetSurname="Smith"
+                        icon="checkup"
+                        iconClass="vis-icon"
+
+                    />}
                 </div>
             </div>
         </div>
