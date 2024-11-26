@@ -31,6 +31,11 @@ function DashboardNewVisit(){
         setView("visits"); // Switch to the visits view
     };
     const visits = [
+        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
+        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
+        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
+        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
+        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
         {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""}
     ]
     return(
@@ -69,16 +74,6 @@ function DashboardNewVisit(){
                             </div>
                         </div>
                     }
-                    {/*{view === "visits" && <List items={visits}/>}*/}
-                    {/*{view === "visits" && <Visit*/}
-                    {/*    date="2024-12-12"*/}
-                    {/*    time="14:30"*/}
-                    {/*    vetName="Mary"*/}
-                    {/*    vetSurname="Smith"*/}
-                    {/*    icon="checkup"*/}
-                    {/*    iconClass="vis-icon"*/}
-                    {/*    */}
-                    {/*/>}*/}
                     {view === "visits" && <List
                         items = {visits.map((visit, index) => (
                             <Visit
@@ -91,7 +86,7 @@ function DashboardNewVisit(){
                                 iconClass="vis-icon"
                             />
                         ))}
-
+                        styleClass={"list-holder"}
                     />}
                 </div>
             </div>

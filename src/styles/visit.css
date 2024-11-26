@@ -52,6 +52,17 @@
     height: 100%;
 }
 ul{
+    display: flex;
     list-style-type: none;
     padding: 0;
+    height: 85%;
+    flex-direction: column;
+    justify-content: space-between;
 }
+.list-holder{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+

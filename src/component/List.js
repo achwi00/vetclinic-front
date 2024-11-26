@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import '../../src/styles/visit.css'
 
-function List({ items = [], itemsPerPage = 10, renderItem }) {
+function List({ items = [], itemsPerPage = 5, renderItem, styleClass }) {
     const [currentPage, setCurrentPage] = useState(1);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const paginatedItems = items.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <div>
+        <div className={styleClass}>
             {/* Render the list items */}
             <ul>
                 {paginatedItems.map((item, index) => (
