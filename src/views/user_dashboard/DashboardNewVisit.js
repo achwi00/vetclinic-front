@@ -10,6 +10,7 @@ function DashboardNewVisit(){
     const {user} = useContext(UserContext);
     const [view, setView] = useState("form");
     const [formData, setFormData] = useState(null);
+    let savedPet;
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
         {label: 'My pets', href:'/dashboard/my-pets'},
@@ -18,14 +19,17 @@ function DashboardNewVisit(){
     ]
     const formFields = [
         { name: 'petname', placeholder: 'Pet name', type: 'text', required: true },
-        { name: 'date', placeholder: 'Date', type: 'date', required: true },
+        { name: 'date', type: 'date', required: true },
+        { name: 'datedue', type: 'date', required: true}
     ];
     const handleFormSubmit = (data) => {
+        savedPet = data.petname;
+        console.log(savedPet);
         setFormData(data); // Save the form data
         setView("visits"); // Switch to the visits view
     };
     const visits = [
-
+        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""}
     ]
     return(
         <div className="all-holder">
