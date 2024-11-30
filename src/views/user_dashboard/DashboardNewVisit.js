@@ -12,6 +12,7 @@ function DashboardNewVisit(){
     const {user} = useContext(UserContext);
     const [view, setView] = useState("form");
     const [formData, setFormData] = useState(null);
+    const [visits, setVisits] = useState();
     let savedPet;
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
@@ -24,20 +25,58 @@ function DashboardNewVisit(){
         { name: 'date', type: 'date', required: true },
         { name: 'datedue', type: 'date', required: true}
     ];
-    const handleFormSubmit = (data) => {
+    const handleFormSubmit = async (data) => {
         savedPet = data.petname;
         console.log(savedPet);
         setFormData(data); // Save the form data
-        setView("visits"); // Switch to the visits view
+        // Switch to the visits view
+
+        try{
+
+            const response = await fetch(
+                `http://localhost:8080/visits/in-between?startDate=${data.date}&endDate=${data.datedue}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const fetchedVisits = await response.json();
+            console.log(fetchedVisits); // Log the visits data
+            //setVisits(visits); // Update visits state
+            let tmpArr = [];
+            fetchedVisits.forEach(
+                visit=>{
+                    console.log(visit);
+                    const tmpObj = {
+                        data: visit.date,
+                        time: visit.endTime,
+                        vetName: visit.vet.name,
+                        vetSurname: visit.vet.surname,
+                        petName: visit.basePet.name,
+                        classStyle: "",
+                        icon: "checkup",
+                        iconClass: ""
+                    }
+                    tmpArr.push(tmpObj);
+                }
+            )
+            console.log(tmpArr);
+            setVisits(tmpArr);
+            setView("visits");
+        }catch(error){
+            console.log("Error fetching visits.")
+        }
+
     };
-    const visits = [
-        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
-        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
-        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
-        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
-        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""},
-        {date: "2024-12-12", time: "14:00", vetName:"Marie", vetSurname:"Smith" , petName: "Cookie", classStyle: "", icon: "checkup", iconClass: ""}
-    ]
+
+
     return(
         <div className="all-holder">
             <SideMenu buttons={buttons}/>
