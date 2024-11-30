@@ -31,9 +31,11 @@ function Visit({date, time, vetName, vetSurname, petName, classStyle, icon, icon
                        <p>{vetName} {vetSurname}</p>
                    </div>
                </div>
-                {type === "free" && (
-                    <button className="btn book-cancel-btn">book</button>
-                )}
+                <div className="inner-right-visit">
+                    {type === "free" && (
+                        <button className="btn book-cancel-btn">book</button>
+                    )}
+                </div>
             </div>
         </div>
     );
