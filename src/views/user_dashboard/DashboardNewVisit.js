@@ -5,7 +5,6 @@ import IconDisplayer from "../../component/IconDisplayer";
 import Form from "../../component/Form";
 import {UserContext} from "../../UserContext";
 import Visit from "../../component/Visit";
-import Box from "../../component/Box";
 
 function DashboardNewVisit(){
     // State to track view and form data
@@ -14,6 +13,7 @@ function DashboardNewVisit(){
     const [formData, setFormData] = useState(null);
     const [visits, setVisits] = useState();
     let savedPet;
+
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
         {label: 'My pets', href:'/dashboard/my-pets'},
@@ -29,7 +29,6 @@ function DashboardNewVisit(){
         savedPet = data.petname;
         console.log(savedPet);
         setFormData(data); // Save the form data
-        // Switch to the visits view
 
         try{
 
@@ -49,25 +48,23 @@ function DashboardNewVisit(){
 
             const fetchedVisits = await response.json();
             console.log(fetchedVisits); // Log the visits data
-            //setVisits(visits); // Update visits state
+
             let tmpArr = [];
             fetchedVisits.forEach(
                 visit=>{
                     console.log(visit);
                     const tmpObj = {
-                        data: visit.date,
+                        date: visit.date,
                         time: visit.endTime,
                         vetName: visit.vet.name,
                         vetSurname: visit.vet.surname,
                         petName: visit.basePet.name,
-                        classStyle: "",
-                        icon: "checkup",
-                        iconClass: ""
                     }
                     tmpArr.push(tmpObj);
                 }
             )
             console.log(tmpArr);
+            //set visits and change view to visits from form
             setVisits(tmpArr);
             setView("visits");
         }catch(error){
@@ -75,7 +72,6 @@ function DashboardNewVisit(){
         }
 
     };
-
 
     return(
         <div className="all-holder">
