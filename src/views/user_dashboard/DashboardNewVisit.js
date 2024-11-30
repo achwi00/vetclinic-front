@@ -54,11 +54,12 @@ function DashboardNewVisit(){
                 visit=>{
                     console.log(visit);
                     const tmpObj = {
+                        id: visit.id,
                         date: visit.date,
                         time: visit.endTime,
                         vetName: visit.vet.name,
                         vetSurname: visit.vet.surname,
-                        petName: visit.basePet.name,
+                        petName: savedPet,
                     }
                     tmpArr.push(tmpObj);
                 }
@@ -68,6 +69,7 @@ function DashboardNewVisit(){
             setVisits(tmpArr);
             setView("visits");
         }catch(error){
+            console.log(error)
             console.log("Error fetching visits.")
         }
 
@@ -113,12 +115,14 @@ function DashboardNewVisit(){
                         items = {visits.map((visit, index) => (
                             <Visit
                                 key={index}
+                                id={visit.id}
                                 date={visit.date}
                                 time={visit.time}
                                 vetName={visit.vetName}
                                 vetSurname={visit.vetSurname}
                                 icon="checkup"
                                 iconClass="vis-icon"
+                                type="free"
                             />
                         ))}
                         styleClass={"list-holder"}

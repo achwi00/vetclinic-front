@@ -36,6 +36,7 @@
 .visit-main-holder{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     height: 90%;
     width: 100%;
@@ -75,3 +76,23 @@ ul{
     background-color: var(--almost-white);
     border: 1px solid var(--dreamy-pink);
 }
+.inner-left-visit{
+    display: flex;
+    flex-direction: row;
+}
+.btn{
+    color: white;
+    background-color: var(--lively-pink);
+    border-radius: 10px;
+    border: none;
+}
+.btn:hover{
+    background-color: var(--plum);
+}
+.book-cancel-btn{
+    font-size: 2vh;
+    height: 40%;
+    width: 20%;
+    margin-right: 5%;
+}
+
