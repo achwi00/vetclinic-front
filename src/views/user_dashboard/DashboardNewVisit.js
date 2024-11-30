@@ -120,6 +120,7 @@ function DashboardNewVisit(){
                                 time={visit.time}
                                 vetName={visit.vetName}
                                 vetSurname={visit.vetSurname}
+                                petName={visit.petName}
                                 icon="checkup"
                                 iconClass="vis-icon"
                                 type="free"

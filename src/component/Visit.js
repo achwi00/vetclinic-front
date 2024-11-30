@@ -3,11 +3,38 @@ import IconDisplayer from "./IconDisplayer";
 import {UserContext} from "../UserContext";
 import '../../src/styles/visit.css'
 
-function Visit({date, time, vetName, vetSurname, petName, classStyle, icon, iconClass, type}) {
+function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, iconClass, type}) {
     const {user} = useContext(UserContext);
-    const handleBooking = () => {
+    const handleBooking = async () => {
         console.log("Booking visit...");
+        console.log(user.email)
         // Implement booking logic here
+        try {
+            const response = await fetch("http://localhost:8080/visits/book-visit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    visitId: id, // ID of the visit
+                    email: user.email,
+                    petName: petName, // Name of the pet
+
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to book visit: ${response.status}`);
+            }
+
+            const result = response.text();
+            console.log("Visit booked successfully:", result);
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error booking visit:", error);
+        }
+
     };
 
     // Function to handle canceling the visit
@@ -33,7 +60,9 @@ function Visit({date, time, vetName, vetSurname, petName, classStyle, icon, icon
                </div>
                 <div className="inner-right-visit">
                     {type === "free" && (
-                        <button className="btn book-cancel-btn">book</button>
+                        <button className="btn book-cancel-btn"
+                        onClick={handleBooking}
+                        >book</button>
                     )}
                 </div>
             </div>
