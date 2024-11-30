@@ -65,4 +65,13 @@ ul{
     height: 100%;
     justify-content: space-around;
 }
-
+.page-nav-btn{
+    color: var(--violet-pink);
+    background-color: var(--dreamy-pink);
+    border: 1px solid var(--violet-pink);
+}
+.page-nav-btn:disabled{
+    color: var(--mid-pink);
+    background-color: var(--almost-white);
+    border: 1px solid var(--dreamy-pink);
+}

@@ -19,13 +19,13 @@ function List({ items = [], itemsPerPage = 5, renderItem, styleClass }) {
 
             {/* Pagination controls */}
             <div>
-                <button
+                <button className="page-nav-btn"
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage((prev) => prev - 1)}
                 >
                     Previous
                 </button>
-                <button
+                <button className="page-nav-btn"
                     disabled={startIndex + itemsPerPage >= items.length}
                     onClick={() => setCurrentPage((prev) => prev + 1)}
                 >
