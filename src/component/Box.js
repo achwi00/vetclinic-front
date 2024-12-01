@@ -1,10 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import '../styles/services.css';
 import IconDisplayer from "./IconDisplayer";
 
-function Box({iconName, iconStyle, title, descrPart1, descrPart2, styleClass, titleStyle, descrStyle}){
+function Box({iconName, iconStyle, title, descrPart1, descrPart2, styleClass, titleStyle, descrStyle, navigateTo}){
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (navigateTo) {
+            navigate(navigateTo);
+        }
+    };
     return(
-        <div className={styleClass}>
+        <div className={styleClass} onClick={handleClick} style={{ cursor: "pointer" }}>
             <IconDisplayer
                 styleClass={iconStyle}
                 iconName={iconName}

@@ -37,6 +37,7 @@ function DashboardMyPets(){
                                 styleClass="box pet"
                                 titleStyle="pet-name"
                                 descrStyle="pet-description"
+                                navigateTo="/dashboard/pet"
                             />
                         ))}
                         styleClass="pet-holder"

@@ -6,6 +6,7 @@ import DashBoardHome from './views/DashBoardHome'
 import DashboardNewVisit from "./views/user_dashboard/DashboardNewVisit";
 import DashboardMyPets from "./views/user_dashboard/DashboardMyPets";
 import DashboardMyPetGroups from "./views/user_dashboard/DashboardMyPetGroups";
+import DashboardPet from "./views/user_dashboard/DashboardPet";
 import Register from "./views/Register";
 import TestView from "./views/TestView";
 import {UserProvider} from "./UserContext";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard/new-visit" element={<DashboardNewVisit/>}/>
           <Route path="/dashboard/my-pets" element={<DashboardMyPets/>}/>
           <Route path="/dashboard/my-pet-groups" element={<DashboardMyPetGroups/>}/>
+          <Route path="/dashboard/pet" element={<DashboardPet/>}/>
           {/*<Route path="/dashboard/my-pets" element={<MyPetGroups/>}/>*/}
         </Routes>
       </Router>
