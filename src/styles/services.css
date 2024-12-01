@@ -19,7 +19,6 @@
 .service{
     flex: 1 1 calc(33.333% - 6vw);
     min-height: 30vh;
-    /*//flex: 0 0 calc(33.333% - 20px);*/
 }
 .service-icon{
     width: 10vw;

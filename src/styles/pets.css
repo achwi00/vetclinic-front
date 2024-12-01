@@ -32,3 +32,14 @@ li{
     min-height: 25vh;
     max-width: 24vw;
 }
+.pet-name{
+    margin: 2% 0 1% 10%;
+    font-weight: bold;
+    font-family: 'Giulia', sans-serif;
+    color: var(--plum);
+}
+.pet-description{
+    margin: 0 0 1% 10%;
+    color: black;
+    font-weight: normal;
+}

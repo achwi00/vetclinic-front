@@ -13,8 +13,8 @@ function DashboardMyPets(){
     ]
     const boxes = [
         {iconName: 'plus', title: 'Add new pet'},
-        {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
-        {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
+        {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', descrPart2: 'Persian'},
+        {iconName: 'cat', title: 'Max', descrPart1: 'Dog, 1 year', descrPart2: 'Chihuahua'},
         {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
         {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
         {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', }
@@ -33,9 +33,10 @@ function DashboardMyPets(){
                                 iconName={box.iconName}
                                 iconStyle="service-icon"
                                 descrPart1={box.descrPart1}
+                                descrPart2={box.descrPart2}
                                 styleClass="box pet"
-                                titleStyle="service-title"
-                                descrStyle="service-description"
+                                titleStyle="pet-name"
+                                descrStyle="pet-description"
                             />
                         ))}
                         styleClass="pet-holder"
