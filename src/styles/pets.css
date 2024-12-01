@@ -1,0 +1,35 @@
+:root{
+    --main-color: #F9F0F3;
+    --lively-pink: #B9466C;
+    --washed-out-pink: #f3e2e8;
+    --plum: #6F2A41;
+    --almost-white: #FCF9FA;
+    --violet-pink: #D99CB0;
+    --mid-pink: #E8C1CE;
+    --dreamy-pink: #F1D9E1;
+}
+.pet-holder{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 100%;
+    justify-content: center;
+}
+.pet-holder ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    margin: 0 auto;
+    width: 100%;
+    height: 80%;
+}
+li{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(33.333% - 2vw);
+}
+
+.pet{
+    min-height: 25vh;
+    max-width: 25vw;
+}
