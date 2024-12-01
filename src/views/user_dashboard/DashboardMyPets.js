@@ -14,7 +14,10 @@ function DashboardMyPets(){
     const boxes = [
         {iconName: 'plus', title: 'Add new pet'},
         {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
-
+        {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
+        {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
+        {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', },
+        {iconName: 'cat', title: 'Cookie', descrPart1: 'Cat, 3 years', }
     ]
     return(
         <div className="all-holder">
@@ -36,6 +39,7 @@ function DashboardMyPets(){
                             />
                         ))}
                         styleClass="pet-holder"
+                        itemsPerPage={6}
                     />
                 </div>
             </div>

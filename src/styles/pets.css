@@ -17,19 +17,18 @@
 }
 .pet-holder ul{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 2vw;
     margin: 0 auto;
     width: 100%;
     height: 80%;
 }
 li{
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: calc(33.333% - 2vw);
+    width: calc(33.333% - 2vw);
 }
-
 .pet{
     min-height: 25vh;
-    max-width: 25vw;
+    max-width: 24vw;
 }
