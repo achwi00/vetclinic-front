@@ -43,3 +43,7 @@
     color: black;
     font-weight: normal;
 }
+.choice-shrink{
+    height: 70%;
+    width: 70%;
+}
