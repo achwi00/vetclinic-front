@@ -10,6 +10,7 @@ import DashboardPet from "./views/user_dashboard/DashboardPet";
 import Register from "./views/Register";
 import TestView from "./views/TestView";
 import {UserProvider} from "./UserContext";
+import DashboardNewPet from "./views/user_dashboard/DashboardNewPet";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/dashboard/my-pets" element={<DashboardMyPets/>}/>
           <Route path="/dashboard/my-pet-groups" element={<DashboardMyPetGroups/>}/>
           <Route path="/dashboard/pet" element={<DashboardPet/>}/>
+          <Route path="/dashboard/new-pet" element={<DashboardNewPet/>}/>
           {/*<Route path="/dashboard/my-pets" element={<MyPetGroups/>}/>*/}
         </Routes>
       </Router>

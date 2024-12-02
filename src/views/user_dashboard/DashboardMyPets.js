@@ -42,10 +42,12 @@ function DashboardMyPets(){
                     title: pet.name,
                     descrPart1: `${pet.type}`,
                     descrPart2: pet.breed || '',
+                    navigateTo: '/dashboard/pet'
                 }));
                 const addNew = {
                     iconName: 'plus', // Custom icon
                     title: 'Add new pet', // Custom title
+                    navigateTo: '/dashboard/new-pet'
                 };
                 mappedBoxes.unshift(addNew);
 
@@ -84,7 +86,7 @@ function DashboardMyPets(){
                                     styleClass="box pet"
                                     titleStyle="pet-name"
                                     descrStyle="pet-description"
-                                    navigateTo="/dashboard/pet"
+                                    navigateTo={box.navigateTo}
                                 />
                             ))}
                             styleClass="pet-holder"
