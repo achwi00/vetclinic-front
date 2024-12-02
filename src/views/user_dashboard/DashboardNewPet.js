@@ -18,8 +18,8 @@ function DashboardNewPet(){
                     <h2 className="site-tracker">Add new pet</h2>
                     {view ==="choice" &&
                         <div className="choice-panel-holder">
-                            <div className="choice-panel  choice-shrink">
-                                <div className="choice left" onClick={()=>{setView("pet")}}>
+                            <div className="choice-panel  choice-panel-shrink">
+                                <div className="choice left" onClick={()=>{setView("add-pet")}}>
                                     <h3>Add new pet</h3>
                                     <IconDisplayer
                                         iconName="cat"
@@ -27,7 +27,7 @@ function DashboardNewPet(){
                                     />
                                     <p>Add a new pet.</p>
                                 </div>
-                                <div className="choice right">
+                                <div className="choice right" onClick={()=> {setView("add-group")}}>
                                     <h3>Add pet group</h3>
                                     <IconDisplayer
                                         iconName="group"
@@ -38,8 +38,39 @@ function DashboardNewPet(){
                             </div>
                         </div>
                     }
-                    {view ==="add-pet"}
-                    {view ==="add-group"}
+                    {view ==="add-pet" &&
+                        <div className="choice-panel-holder">
+                            <div className="choice-panel">
+                                <div className="choice left choice-grow">
+                                    <h3>Add new pet</h3>
+                                    <IconDisplayer
+                                        iconName="cat"
+                                        styleClass="service-icon"
+                                    />
+                                    <p>Add a new pet.</p>
+                                </div>
+                                <div className="right choice-shrink">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {view ==="add-group" &&
+                        <div className="choice-panel-holder">
+                            <div className="choice-panel">
+                                <div className="left choice-shrink">
+
+                                </div>
+                                <div className="choice right choice-grow">
+                                    <h3>Add new group</h3>
+                                    <IconDisplayer
+                                        iconName="group"
+                                        styleClass="service-icon"
+                                    />
+                                    <p>Add a new pet group.</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

@@ -43,7 +43,17 @@
     color: black;
     font-weight: normal;
 }
-.choice-shrink{
+.choice-panel-shrink{
     height: 70%;
     width: 70%;
+}
+.choice-grow{
+    width: 80%;
+    background-color: var(--dreamy-pink);
+}
+.choice-shrink{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
 }
