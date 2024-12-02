@@ -21,7 +21,9 @@ function DashboardNewPet(){
             options: [
                 { value: 'DOG', label: 'Dog' },
                 { value: 'CAT', label: 'Cat' },
-                { value: 'OTHER', label: 'Other' }
+                { value: 'RABBIT', label: 'Rabbit' },
+                { value: 'RODENT', label: 'Rodent' },
+                { value: 'FARM_ANIMAL', label: 'Farm animal'}
             ],
             required: true
         },
