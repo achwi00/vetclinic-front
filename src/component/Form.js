@@ -28,15 +28,34 @@ function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleC
                 {fields.map((field, index) => (
                     <div key={index} className="form-group">
                         <label>{field.label}</label>
-                        <input
-                            type={field.type}
-                            className={inputStyle}
-                            name={field.name}
-                            placeholder={field.placeholder}
-                            value={formData[field.name] || ''}
-                            onChange={(e) => handleChange(e, field.name)}
-                            required={field.required || false}
-                        />
+                        {field.options ? (
+                            // Render a dropdown for fields with options
+                            <select
+                                className={inputStyle}
+                                name={field.name}
+                                value={formData[field.name] || ''}
+                                onChange={(e) => handleChange(e, field.name)}
+                                required={field.required || false}
+                            >
+                                <option value="" disabled>{field.placeholder}</option>
+                                {field.options.map((option, i) => (
+                                    <option key={i} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        ) : (
+                            // Render an input for regular fields
+                            <input
+                                type={field.type}
+                                className={inputStyle}
+                                name={field.name}
+                                placeholder={field.placeholder}
+                                value={formData[field.name] || ''}
+                                onChange={(e) => handleChange(e, field.name)}
+                                required={field.required || false}
+                            />
+                        )}
                     </div>
                 ))}
                 <button type="submit" className={buttonClass}>{buttonMsg}</button>

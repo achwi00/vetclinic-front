@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import SideMenu from "../../component/SideMenu";
 import IconDisplayer from "../../component/IconDisplayer";
+import Form from "../../component/Form";
 
 function DashboardNewPet(){
     const [view, setView] = useState("choice");
@@ -9,7 +10,36 @@ function DashboardNewPet(){
         {label: 'My pets', href:'/dashboard/my-pets'},
         {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
         {label: 'Visits', href:'#'},
-    ]
+    ];
+    const formFields = [
+        { name: 'petName', placeholder: 'Pet name', type: 'text', required: true },
+        { name: 'breed', placeholder: 'Breed', type: 'text', required: true },
+        {
+            name: 'type',
+            placeholder: 'Select type',
+            type: 'select',
+            options: [
+                { value: 'DOG', label: 'Dog' },
+                { value: 'CAT', label: 'Cat' },
+                { value: 'OTHER', label: 'Other' }
+            ],
+            required: true
+        },
+        { name: 'birthDate', placeholder: 'Birth date', type: 'date', required: true },
+        {
+            name: 'sex',
+            placeholder: 'Select sex',
+            type: 'select',
+            options: [
+                { value: 'MALE', label: 'Male' },
+                { value: 'FEMALE', label: 'Female' },
+                { value: 'UNKNOWN', label: 'Unknown' }
+            ],
+            required: true
+        }
+    ];
+    const handleFormSubmit = () => {}
+
     return(
         <div className="all-holder">
             <SideMenu buttons={buttons}/>
@@ -42,12 +72,20 @@ function DashboardNewPet(){
                         <div className="choice-panel-holder">
                             <div className="choice-panel">
                                 <div className="choice left choice-grow">
-                                    <h3>Add new pet</h3>
+                                    <h3>New pet</h3>
                                     <IconDisplayer
                                         iconName="cat"
                                         styleClass="service-icon"
                                     />
-                                    <p>Add a new pet.</p>
+                                    <Form
+                                        fields={formFields}
+                                        onFormSubmit={handleFormSubmit}
+                                        styleClass="formsHolder forms-longer"
+                                        inputStyle="formInputs credentials"
+                                        buttonMsg="add pet"
+                                        buttonClass="formInputs form-btn"
+                                    />
+
                                 </div>
                                 <div className="right choice-shrink">
                                 </div>

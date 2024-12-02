@@ -50,10 +50,17 @@
 .choice-grow{
     width: 80%;
     background-color: var(--dreamy-pink);
+    justify-content: center;
+}
+.choice-grow h3{
+    margin-top:0;
 }
 .choice-shrink{
     height: 100%;
     display: flex;
     flex-direction: column;
     width: 20%;
+}
+.forms-longer{
+    height: 55%;
 }
