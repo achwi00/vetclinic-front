@@ -6,6 +6,8 @@ import {UserContext} from "../../UserContext";
 
 function DashboardNewPet(){
     const {user} = useContext(UserContext);
+    const [res, setResponse] = useState(null)
+    const email = user.email;
     const [view, setView] = useState("choice");
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
@@ -43,7 +45,8 @@ function DashboardNewPet(){
         }
     ];
     const handleFormSubmit = async (formData) => {
-        const email = user.email;
+
+        console.log("mail in handleformsubmit" , user.email);
         try {
             const response = await fetch("http://localhost:8080/new-pet", {
                 method: "POST",
@@ -64,13 +67,15 @@ function DashboardNewPet(){
             if (!response.ok) {
                 throw new Error(`Failed to add pet: ${response.status}`);
             }
-
-            const result = response.text();
-            console.log("Pet added successfully:", result);
+            setResponse("Pet added successfully.");
 
             // Optional: Handle UI updates or notifications here
         } catch (error) {
             console.error("Error adding pet:", error);
+            setResponse("Failed to add pet.");
+        }
+        finally{
+            setView("response")
         }
     }
 
@@ -140,6 +145,16 @@ function DashboardNewPet(){
                                     />
                                     <p>Add a new pet group.</p>
                                 </div>
+                            </div>
+                        </div>
+                    }
+                    {view === "response" &&
+                        <div className="choice-panel-holder">
+                            <div className="choice-panel choice-response">
+                                <p className="response-p">{res}</p>
+                                {/*<div className="success-paw">*/}
+                                {/*    <img src={"../imgs/paw-right.svg"} alt={"paw"} />*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     }

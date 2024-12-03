@@ -64,3 +64,17 @@
 .forms-longer{
     height: 55%;
 }
+.response-p{
+    margin-left: 5%;
+    font-size: 2.5vh;
+    color:var(--plum);
+}
+/*.choice-response{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+
+/*}*/
+/*.success-paw{*/
+/*    height: 70%;*/
+/*    margin-right: 0;*/
+/*}*/
