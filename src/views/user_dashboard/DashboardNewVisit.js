@@ -31,7 +31,6 @@ function DashboardNewVisit(){
         setFormData(data); // Save the form data
 
         try{
-
             const response = await fetch(
                 `http://localhost:8080/visits/in-between?startDate=${data.date}&endDate=${data.datedue}`,
                 {

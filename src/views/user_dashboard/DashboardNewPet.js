@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import SideMenu from "../../component/SideMenu";
 import IconDisplayer from "../../component/IconDisplayer";
 import Form from "../../component/Form";
+import {UserContext} from "../../UserContext";
 
 function DashboardNewPet(){
+    const {user} = useContext(UserContext);
     const [view, setView] = useState("choice");
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
@@ -40,7 +42,37 @@ function DashboardNewPet(){
             required: true
         }
     ];
-    const handleFormSubmit = () => {}
+    const handleFormSubmit = async (formData) => {
+        const email = user.email;
+        try {
+            const response = await fetch("http://localhost:8080/new-pet", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    petName: formData.petName,
+                    breed: formData.breed,
+                    type: formData.type,
+                    birthDate: formData.birthDate,
+                    sex: formData.sex,
+                    size: formData.size
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to add pet: ${response.status}`);
+            }
+
+            const result = response.text();
+            console.log("Pet added successfully:", result);
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error adding pet:", error);
+        }
+    }
 
     return(
         <div className="all-holder">
@@ -101,7 +133,7 @@ function DashboardNewPet(){
 
                                 </div>
                                 <div className="choice right choice-grow">
-                                    <h3>Add new group</h3>
+                                    <h3>New group</h3>
                                     <IconDisplayer
                                         iconName="group"
                                         styleClass="service-icon"

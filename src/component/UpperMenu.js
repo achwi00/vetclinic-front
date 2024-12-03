@@ -23,7 +23,7 @@ function UpperMenu() {
                     ))}
                     <RoundButton
                         label='Log in'
-                        href='#log-in'
+                        href='/login'
                         styleClass="log-button"
                     />
                 </div>
