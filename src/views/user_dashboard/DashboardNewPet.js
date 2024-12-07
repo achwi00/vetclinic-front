@@ -44,6 +44,24 @@ function DashboardNewPet(){
             required: true
         }
     ];
+    const formFieldsGroup = [
+        { name: 'petName', placeholder: 'Pet group name', type: 'text', required: true },
+        { name: 'breed', placeholder: 'Breed', type: 'text', required: true },
+        {
+            name: 'type',
+            placeholder: 'Select type',
+            type: 'select',
+            options: [
+                { value: 'DOG', label: 'Dogs' },
+                { value: 'CAT', label: 'Cats' },
+                { value: 'RABBIT', label: 'Rabbits' },
+                { value: 'RODENT', label: 'Rodents' },
+                { value: 'FARM_ANIMAL', label: 'Farm animals'}
+            ],
+            required: true
+        },
+        { name: 'size', placeholder: 'Group size', type: 'number', required: true}
+    ]
     const handleFormSubmit = async (formData) => {
 
         console.log("mail in handleformsubmit" , user.email);
@@ -59,13 +77,45 @@ function DashboardNewPet(){
                     breed: formData.breed,
                     type: formData.type,
                     birthDate: formData.birthDate,
-                    sex: formData.sex,
-                    size: formData.size
+                    sex: formData.sex
                 }),
             });
 
             if (!response.ok) {
                 throw new Error(`Failed to add pet: ${response.status}`);
+            }
+            setResponse("Pet added successfully.");
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error adding pet:", error);
+            setResponse("Failed to add pet.");
+        }
+        finally{
+            setView("response")
+        }
+    }
+
+    const handleGroupFormSubmit = async (formData) => {
+
+        //console.log("mail in handleformsubmit" , user.email);
+        try {
+            const response = await fetch("http://localhost:8080/new-pet-group", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    petName: formData.petName,
+                    breed: formData.breed,
+                    type: formData.type,
+                    size: formData.size
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to add pet group: ${response.status}`);
             }
             setResponse("Pet added successfully.");
 
@@ -121,7 +171,7 @@ function DashboardNewPet(){
                                         onFormSubmit={handleFormSubmit}
                                         styleClass="formsHolder forms-longer"
                                         inputStyle="formInputs credentials"
-                                        buttonMsg="add pet"
+                                        buttonMsg="add pet group"
                                         buttonClass="formInputs form-btn"
                                     />
 
@@ -143,7 +193,14 @@ function DashboardNewPet(){
                                         iconName="group"
                                         styleClass="service-icon"
                                     />
-                                    <p>Add a new pet group.</p>
+                                    <Form
+                                        fields={formFieldsGroup}
+                                        onFormSubmit={handleGroupFormSubmit}
+                                        styleClass="formsHolder forms-longer"
+                                        inputStyle="formInputs credentials"
+                                        buttonMsg="add pet group"
+                                        buttonClass="formInputs form-btn"
+                                    />
                                 </div>
                             </div>
                         </div>
