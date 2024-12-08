@@ -38,9 +38,29 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
     };
 
     // Function to handle canceling the visit
-    const handleCancel = () => {
-        console.log("Canceling visit...");
+    const handleCancel = async () => {
+        console.log("Canceling visit...", id);
         // Implement canceling logic here
+
+        try {
+            const response = await fetch(`http://localhost:8080/visits/cancel-visit?visitId=${id}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to book visit: ${response.status}`);
+            }
+
+            const result = response.text();
+            console.log("Visit cancelled successfully:", result);
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error booking visit:", error);
+        }
     };
     return(
         <div className="visit vis-free">
