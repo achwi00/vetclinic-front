@@ -6,6 +6,7 @@ const InnerNav = ({ buttons, styleClass, buttonStyleClass }) => {
             {buttons.map((button, index) => (
                 <button
                     key={index}
+                    id={button.id}
                     onClick={button.onClick}
                     className={buttonStyleClass}
                 >

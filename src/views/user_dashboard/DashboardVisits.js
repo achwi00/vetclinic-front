@@ -7,11 +7,15 @@ function DashboardVisits(){
     const handlePrevious = () => {
         console.log("Previous button clicked");
         setView("previous");
+        document.getElementById('prev-vis-btn').style.backgroundColor = '#D99CB0';
+        document.getElementById('planned-vis-btn').style.backgroundColor = '#E8C1CE';
     };
 
     const handlePlanned = () => {
         console.log("Planned button clicked");
         setView("planned");
+        document.getElementById('prev-vis-btn').style.backgroundColor = '#E8C1CE';
+        document.getElementById('planned-vis-btn').style.backgroundColor = '#D99CB0';
     };
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
