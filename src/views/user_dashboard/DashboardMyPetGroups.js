@@ -14,7 +14,7 @@ function DashboardMyPetGroups(){
         {label: 'New visit', href:'/dashboard/new-visit'},
         {label: 'My pets', href:'/dashboard/my-pets'},
         {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
-        {label: 'Visits', href:'#'},
+        {label: 'Visits', href:'/dashboard/visits'},
     ]
 
     useEffect(() => {

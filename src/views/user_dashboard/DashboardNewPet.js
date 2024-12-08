@@ -13,7 +13,7 @@ function DashboardNewPet(){
         {label: 'New visit', href:'/dashboard/new-visit'},
         {label: 'My pets', href:'/dashboard/my-pets'},
         {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
-        {label: 'Visits', href:'#'},
+        {label: 'Visits', href:'/dashboard/visits'},
     ];
     const formFields = [
         { name: 'petName', placeholder: 'Pet name', type: 'text', required: true },
