@@ -157,6 +157,7 @@ function DashboardVisits(){
                                 petName={visit.petName}
                                 icon="checkup"
                                 iconClass="vis-icon"
+                                type="booked"
                             />
                         ))}
                         styleClass={"list-holder"}

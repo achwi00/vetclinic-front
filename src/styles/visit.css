@@ -58,7 +58,11 @@ ul{
     padding: 0;
     height: 85%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /*align-content: flex-start;*/
+}
+li{
+    margin-bottom: 1%;
 }
 .list-holder{
     display: flex;

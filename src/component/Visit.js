@@ -64,6 +64,11 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
                         onClick={handleBooking}
                         >book</button>
                     )}
+                    {type === "booked" && (
+                        <button className="btn book-cancel-btn"
+                                onClick={handleCancel}
+                        >cancel</button>
+                    )}
                 </div>
             </div>
         </div>
