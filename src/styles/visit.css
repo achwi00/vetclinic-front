@@ -81,6 +81,8 @@ li{
     border: 1px solid var(--dreamy-pink);
 }
 .inner-left-visit{
+    height: 100%;
+    align-items: center;
     display: flex;
     flex-direction: row;
 }
@@ -102,4 +104,12 @@ li{
     height: 40%;
     width: 20%;
     margin-right: 5%;
+}
+.visit-info-holder {
+    display: flex;
+    flex-direction: column;
+}
+.visit-info-holder p{
+    margin-bottom: 1%;
+    margin-top: 2%;
 }

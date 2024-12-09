@@ -75,6 +75,9 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
                        styleClass={iconClass}
                    />
                    <div className="visit-info-holder">
+                       {type === "completed" &&
+                       <p>{petName}</p>
+                       }
                        <p>{vetName} {vetSurname}</p>
                    </div>
                </div>
