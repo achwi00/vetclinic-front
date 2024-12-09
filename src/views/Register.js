@@ -17,7 +17,7 @@ function Register(){
                     styleClass="formsHolder formsHolderRegister"
                     onSubmitEndpoint={"#"}
                     inputStyle="formInputs credentials"
-                    buttonMsg="log in"
+                    buttonMsg="register"
                     buttonClass="formInputs form-btn"
                     showIcon={true}
                 />
