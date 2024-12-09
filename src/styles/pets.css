@@ -69,6 +69,41 @@
     font-size: 2.5vh;
     color:var(--plum);
 }
+.pet-info-holder{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.pet-desc{
+    height: 14vh;
+}
+.mypet-icon{
+    height: 6vh;
+    width: 8vw;
+}
+.left-pet{
+    width: 50%;
+}
+.pet-details-holder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+}
+.pet-details-holder h2{
+    font-size: 2vh;
+}
+.pet-details{
+    display: flex;
+    flex-direction: column;
+}
+.pet-details p{
+    font-size: 1.5vh;
+    margin-bottom: 1%;
+    margin-top: 0;
+}
 /*.choice-response{*/
 /*    display: flex;*/
 /*    flex-direction: row;*/
