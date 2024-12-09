@@ -42,7 +42,7 @@ function DashboardMyPets(){
                     title: pet.name,
                     descrPart1: `${pet.type}`,
                     descrPart2: pet.breed || '',
-                    navigateTo: '/dashboard/pet'
+                    navigateTo: `/dashboard/pet/${encodeURIComponent(pet.name)}`
                 }));
                 const addNew = {
                     iconName: 'plus', // Custom icon

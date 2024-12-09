@@ -26,7 +26,7 @@ function App() {
           <Route path="/dashboard/new-visit" element={<DashboardNewVisit/>}/>
           <Route path="/dashboard/my-pets" element={<DashboardMyPets/>}/>
           <Route path="/dashboard/my-pet-groups" element={<DashboardMyPetGroups/>}/>
-          <Route path="/dashboard/pet" element={<DashboardPet/>}/>
+          <Route path="/dashboard/pet/:petName" element={<DashboardPet/>}/>
           <Route path="/dashboard/new-pet" element={<DashboardNewPet/>}/>
           <Route path="/dashboard/visits" element={<DashboardVisits/>}/>
           {/*<Route path="/dashboard/my-pets" element={<MyPetGroups/>}/>*/}
