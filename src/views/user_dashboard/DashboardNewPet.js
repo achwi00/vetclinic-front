@@ -171,7 +171,7 @@ function DashboardNewPet(){
                                         onFormSubmit={handleFormSubmit}
                                         styleClass="formsHolder forms-longer"
                                         inputStyle="formInputs credentials"
-                                        buttonMsg="add pet group"
+                                        buttonMsg="add pet"
                                         buttonClass="formInputs form-btn"
                                     />
 
