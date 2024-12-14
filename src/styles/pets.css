@@ -79,7 +79,7 @@
     height: 14vh;
 }
 .mypet-icon{
-    height: 6vh;
+    height: 5vh;
     width: 8vw;
 }
 .left-pet{
@@ -103,6 +103,9 @@
     font-size: 1.5vh;
     margin-bottom: 1%;
     margin-top: 0;
+}
+.health-book-nav{
+    margin-top: 2%;
 }
 /*.choice-response{*/
 /*    display: flex;*/

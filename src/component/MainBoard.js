@@ -10,9 +10,8 @@ function MainBoard(){
                     <img src={"../group.svg"} alt={"cat"}/>
                 </div>
                 <div className="welcome-text">
-                    <p id="welcome-msg">Lorem ipsum dolor sit amet.</p>
-                    <p id="description-msg">Consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua. Consectetur adipiscing elit.</p>
+                    <p id="welcome-msg">Your pets are safe with us.</p>
+                    <p id="description-msg">Your pets deserve the best care - trust our expert veterinary team to keep them happy, healthy, and thriving!</p>
                     <div id="learn-more-holder">
                         <RoundButton
                             label='LEARN MORE'

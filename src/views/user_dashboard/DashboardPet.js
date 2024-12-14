@@ -6,6 +6,9 @@ import '../../styles/services.css'
 
 import {UserContext} from "../../UserContext";
 import IconDisplayer from "../../component/IconDisplayer";
+import InnerNav from "../../component/InnerNav";
+import List from "../../component/List";
+import Visit from "../../component/Visit";
 
 function DashboardPet(){
     const {user} = useContext(UserContext);
@@ -13,12 +16,31 @@ function DashboardPet(){
     const { petName } = useParams();
     const [petData, setPetData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [view, setView] = useState("vaccinations");
 
+    const getVaccinations = async () => {
+
+    }
+    const getTreatments = async () => {
+
+    }
+    const getSurgeries = async () => {
+
+    }
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
         {label: 'My pets', href:'/dashboard/my-pets'},
         {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
         {label: 'Visits', href:'/dashboard/visits'},
+    ]
+    const nav = [
+        {id: 'vaccinations-btn', label:'Vaccinations', view:'vaccinations', onClick: getVaccinations},
+        {id: 'treatments-btn', label:'Treatments', view:'treatments', onClick: getTreatments},
+        {id: 'surgeries-btn', label:'Surgeries', view: 'surgeries', onClick: getSurgeries}
+    ]
+    const vaccinations = [
+        {date: '01-12-2024', vetName:'John', vetSurname:'Doe', petName:'Cookie'},
+        {date: '19-04-2024', vetName:'Marie', vetSurname:'Jones', petName:'Cookie'},
     ]
     useEffect(() => {
         const fetchPetData = async () => {
@@ -47,7 +69,6 @@ function DashboardPet(){
                     <h2 className="site-tracker">My pet</h2>
                     <div className="visit vis-free pet-desc">
                         <div className="pet-info-holder">
-
                             <div className="inner-left-visit left-pet">
                                 <IconDisplayer
                                     iconName="cat"
@@ -67,6 +88,29 @@ function DashboardPet(){
 
                         </div>
                     </div>
+                    <InnerNav
+                        buttons={nav}
+                        styleClass="visits-nav health-book-nav"
+                        buttonStyleClass="nav-btn"
+                    />
+                    {view === "vaccinations" && <List
+                        items = {vaccinations.map((vaccination, index) => (
+                            <Visit
+                                key={index}
+                                id={vaccination.id}
+                                date={vaccination.date}
+                                time={vaccination.time}
+                                vetName={vaccination.vetName}
+                                vetSurname={vaccination.vetSurname}
+                                petName={vaccination.petName}
+                                icon="vaccine"
+                                iconClass="vis-icon"
+                                type="vaccination"
+                            />
+                        ))}
+                        styleClass={"list-holder"}
+                        itemsPerPage={4}
+                    />}
                 </div>
             </div>
         </div>
