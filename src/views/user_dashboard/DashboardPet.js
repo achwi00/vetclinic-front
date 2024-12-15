@@ -20,6 +20,7 @@ function DashboardPet(){
     const [view, setView] = useState("vaccinations");
     const [vaccination, setVaccination] = useState([]);
     const [treatment, setTreatment] = useState([]);
+    const [surgeries, setSurgeries] = useState([]);
 
     const getVaccinations = async () => {
         document.getElementById('treatments-btn').style.backgroundColor = '#E8C1CE';
@@ -112,7 +113,7 @@ function DashboardPet(){
             setView("treatments");
         }catch(error){
             console.log(error)
-            console.log("Error fetching visits.")
+            console.log("Error fetching treatments.")
         }
 
     }
@@ -120,6 +121,45 @@ function DashboardPet(){
         document.getElementById('treatments-btn').style.backgroundColor = '#E8C1CE';
         document.getElementById('surgeries-btn').style.backgroundColor = '#D99CB0';
         document.getElementById('vaccinations-btn').style.backgroundColor = '#E8C1CE';
+
+        try{
+            const response = await fetch(
+                `http://localhost:8080/completed-surgeries?basePetId=${petData.id}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const fetchedSurgeries = await response.json();
+            console.log(fetchedSurgeries); // Log the visits data
+
+            let tmpArr = [];
+            fetchedSurgeries.forEach(
+                surgery=>{
+                    console.log(surgery)
+                    const tmpObj = {
+                        id: surgery.id,
+                        date: surgery.date,
+                        description: surgery.description,
+                    }
+                    tmpArr.push(tmpObj);
+                }
+            )
+            console.log(tmpArr);
+            //set visits and change view to visits from form
+            setSurgeries(tmpArr);
+            setView("surgeries");
+        }catch(error){
+            console.log(error)
+            console.log("Error fetching visits.")
+        }
     }
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
@@ -205,7 +245,7 @@ function DashboardPet(){
                             <Visit
                                 key={index}
                                 id={treatment.id}
-                                date={treatment.date}
+                                date={`${treatment.date} to`}
                                 time={treatment.time}
                                 vetName={treatment.medicationName}
                                 vetSurname={treatment.medicationBatch}
@@ -213,6 +253,21 @@ function DashboardPet(){
                                 icon="medicine"
                                 iconClass="vis-icon"
                                 type="others"
+                            />
+                        ))}
+                        styleClass={"list-holder"}
+                        itemsPerPage={4}
+                    />}
+                    {view === "surgeries" && <List
+                        items = {surgeries.map((surgery, index) => (
+                            <Visit
+                                key={index}
+                                id={surgery.id}
+                                date={surgery.date}
+                                vetName={surgery.description}
+                                icon="surgery"
+                                iconClass="vis-icon"
+                                type="surgery"
                             />
                         ))}
                         styleClass={"list-holder"}

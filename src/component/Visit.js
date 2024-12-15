@@ -65,13 +65,7 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
     return(
         <div className="visit vis-free">
             <div className="date-time-holder">
-                {type === ("completed"||"free"||"booked") &&
-                    <p>{date} {time}</p>
-                }
-                {type ==="vaccination" && <p>{date}</p>}
-                {type === "others" &&
-                    <p>{date} to {time}</p>
-                }
+                <p>{date} {time}</p>
             </div>
             <hr/>
             <div className="visit-main-holder">
