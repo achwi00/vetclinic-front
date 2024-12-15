@@ -3,7 +3,7 @@ import IconDisplayer from "./IconDisplayer";
 import {UserContext} from "../UserContext";
 import '../../src/styles/visit.css'
 
-function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, iconClass, type}) {
+function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, iconClass, type, description}) {
     const {user} = useContext(UserContext);
     const handleBooking = async () => {
         console.log("Booking visit...");
@@ -65,7 +65,13 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
     return(
         <div className="visit vis-free">
             <div className="date-time-holder">
-                <p>{date} {time}</p>
+                {type === ("completed"||"free"||"booked") &&
+                    <p>{date} {time}</p>
+                }
+                {type ==="vaccination" && <p>{date}</p>}
+                {type === "others" &&
+                    <p>{date} to {time}</p>
+                }
             </div>
             <hr/>
             <div className="visit-main-holder">
@@ -92,6 +98,9 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
                                 onClick={handleCancel}
                         >cancel</button>
                     )}
+                    {type === "others" &&
+                        <p>{description}</p>
+                    }
                 </div>
             </div>
         </div>

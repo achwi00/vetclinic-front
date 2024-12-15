@@ -9,6 +9,7 @@ import IconDisplayer from "../../component/IconDisplayer";
 import InnerNav from "../../component/InnerNav";
 import List from "../../component/List";
 import Visit from "../../component/Visit";
+import {renderToNodeStream} from "react-dom/server";
 
 function DashboardPet(){
     const {user} = useContext(UserContext);
@@ -18,6 +19,7 @@ function DashboardPet(){
     const [loading, setLoading] = useState(true);
     const [view, setView] = useState("vaccinations");
     const [vaccination, setVaccination] = useState([]);
+    const [treatment, setTreatment] = useState([]);
 
     const getVaccinations = async () => {
         document.getElementById('treatments-btn').style.backgroundColor = '#E8C1CE';
@@ -71,6 +73,48 @@ function DashboardPet(){
         document.getElementById('surgeries-btn').style.backgroundColor = '#E8C1CE';
         document.getElementById('vaccinations-btn').style.backgroundColor = '#E8C1CE';
 
+        try{
+            const response = await fetch(
+                `http://localhost:8080/treatments?basePetId=${petData.id}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const fetchedTreatments = await response.json();
+            console.log(fetchedTreatments); // Log the visits data
+
+            let tmpArr = [];
+            fetchedTreatments.forEach(
+                treatment=>{
+                    console.log(treatment)
+                    const tmpObj = {
+                        id: treatment.id,
+                        date: treatment.startDate,
+                        time: treatment.endDate,
+                        medicationName: treatment.medication.name,
+                        medicationBatch: treatment.medication.batch,
+                        description: treatment.description,
+                    }
+                    tmpArr.push(tmpObj);
+                }
+            )
+            console.log(tmpArr);
+            //set visits and change view to visits from form
+            setTreatment(tmpArr);
+            setView("treatments");
+        }catch(error){
+            console.log(error)
+            console.log("Error fetching visits.")
+        }
+
     }
     const getSurgeries = async () => {
         document.getElementById('treatments-btn').style.backgroundColor = '#E8C1CE';
@@ -88,10 +132,7 @@ function DashboardPet(){
         {id: 'treatments-btn', label:'Treatments', view:'treatments', onClick: getTreatments},
         {id: 'surgeries-btn', label:'Surgeries', view: 'surgeries', onClick: getSurgeries}
     ]
-    const vaccinations = [
-        {date: '01-12-2024', vetName:'John', vetSurname:'Doe', petName:'Cookie'},
-        {date: '19-04-2024', vetName:'Marie', vetSurname:'Jones', petName:'Cookie'},
-    ]
+
     useEffect(() => {
         const fetchPetData = async () => {
             try {
@@ -154,6 +195,24 @@ function DashboardPet(){
                                 icon="vaccine"
                                 iconClass="vis-icon"
                                 type="vaccination"
+                            />
+                        ))}
+                        styleClass={"list-holder"}
+                        itemsPerPage={4}
+                    />}
+                    {view === "treatments" && <List
+                        items = {treatment.map((treatment, index) => (
+                            <Visit
+                                key={index}
+                                id={treatment.id}
+                                date={treatment.date}
+                                time={treatment.time}
+                                vetName={treatment.medicationName}
+                                vetSurname={treatment.medicationBatch}
+                                description={treatment.description}
+                                icon="medicine"
+                                iconClass="vis-icon"
+                                type="others"
                             />
                         ))}
                         styleClass={"list-holder"}
