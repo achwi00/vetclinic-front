@@ -19,9 +19,13 @@ function DashBoardHome(){
                 ]
             case 'VET':
                 return [
-                    {label: 'My data', href:'#'},
-                    {label: 'Incoming visits', href:'#'},
+                    {label: 'Incoming today', href:'#'},
                     {label: 'My schedule', href:'#'},
+                ]
+            case 'RECEPTIONIST':
+                return [
+                    {label: 'Schedules', href: '#'},
+                    {label: 'New visit', href: '#'}
                 ]
             default:
                 return []

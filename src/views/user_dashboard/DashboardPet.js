@@ -17,15 +17,65 @@ function DashboardPet(){
     const [petData, setPetData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [view, setView] = useState("vaccinations");
+    const [vaccination, setVaccination] = useState([]);
 
     const getVaccinations = async () => {
+        document.getElementById('treatments-btn').style.backgroundColor = '#E8C1CE';
+        document.getElementById('surgeries-btn').style.backgroundColor = '#E8C1CE';
+        document.getElementById('vaccinations-btn').style.backgroundColor = '#D99CB0';
+
+        try{
+            const response = await fetch(
+                `http://localhost:8080/vaccination?basePetId=${petData.id}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const fetchedVaccinations = await response.json();
+            console.log(fetchedVaccinations); // Log the visits data
+
+            let tmpArr = [];
+            fetchedVaccinations.forEach(
+                vaccination=>{
+                    console.log(vaccination);
+                    const tmpObj = {
+                        id: vaccination.id,
+                        date: vaccination.date,
+                        medicationName: vaccination.medication.name,
+                        medicationBatch: vaccination.medication.batch,
+                    }
+                    tmpArr.push(tmpObj);
+                }
+            )
+            console.log(tmpArr);
+            //set visits and change view to visits from form
+            setVaccination(tmpArr);
+            setView("vaccinations");
+        }catch(error){
+            console.log(error)
+            console.log("Error fetching visits.")
+        }
+
 
     }
     const getTreatments = async () => {
+        document.getElementById('treatments-btn').style.backgroundColor = '#D99CB0';
+        document.getElementById('surgeries-btn').style.backgroundColor = '#E8C1CE';
+        document.getElementById('vaccinations-btn').style.backgroundColor = '#E8C1CE';
 
     }
     const getSurgeries = async () => {
-
+        document.getElementById('treatments-btn').style.backgroundColor = '#E8C1CE';
+        document.getElementById('surgeries-btn').style.backgroundColor = '#D99CB0';
+        document.getElementById('vaccinations-btn').style.backgroundColor = '#E8C1CE';
     }
     const buttons = [
         {label: 'New visit', href:'/dashboard/new-visit'},
@@ -94,15 +144,13 @@ function DashboardPet(){
                         buttonStyleClass="nav-btn"
                     />
                     {view === "vaccinations" && <List
-                        items = {vaccinations.map((vaccination, index) => (
+                        items = {vaccination.map((vaccination, index) => (
                             <Visit
                                 key={index}
                                 id={vaccination.id}
                                 date={vaccination.date}
-                                time={vaccination.time}
-                                vetName={vaccination.vetName}
-                                vetSurname={vaccination.vetSurname}
-                                petName={vaccination.petName}
+                                vetName={vaccination.medicationName}
+                                vetSurname={vaccination.medicationBatch}
                                 icon="vaccine"
                                 iconClass="vis-icon"
                                 type="vaccination"

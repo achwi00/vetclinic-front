@@ -106,6 +106,7 @@ function DashboardNewVisit(){
                                         styleClass="service-icon"
                                     />
                                     <p>Book a visit for Your pet group.</p>
+                                    {/*<p>Contact us at: +00 000 000 or clinic@meow.com</p>*/}
                                 </div>
                             </div>
                         </div>
