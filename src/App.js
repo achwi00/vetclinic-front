@@ -12,6 +12,9 @@ import TestView from "./views/TestView";
 import {UserProvider} from "./UserContext";
 import DashboardNewPet from "./views/user_dashboard/DashboardNewPet";
 import DashboardVisits from "./views/user_dashboard/DashboardVisits";
+import NewPrescriptionDashboard from "./views/vet_dashboard/NewPrescriptionDashboard";
+import DashboardIncomingToday from "./views/vet_dashboard/DashboardIncomingToday";
+import DashboardMySchedule from "./views/vet_dashboard/DashboardMySchedule";
 
 function App() {
   return (
@@ -29,7 +32,9 @@ function App() {
           <Route path="/dashboard/pet/:petName" element={<DashboardPet/>}/>
           <Route path="/dashboard/new-pet" element={<DashboardNewPet/>}/>
           <Route path="/dashboard/visits" element={<DashboardVisits/>}/>
-          {/*<Route path="/dashboard/my-pets" element={<MyPetGroups/>}/>*/}
+          <Route path="/dashboard/new-prescription" element={<NewPrescriptionDashboard/>}/>
+          <Route path="/dashboard/incoming" element={<DashboardIncomingToday/>}/>
+          <Route path="/dashboard/my-schedule" element={<DashboardMySchedule/>}/>
         </Routes>
       </Router>
     </UserProvider>

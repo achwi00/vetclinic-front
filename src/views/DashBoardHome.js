@@ -21,6 +21,7 @@ function DashBoardHome(){
                 return [
                     {label: 'Incoming today', href:'#'},
                     {label: 'My schedule', href:'#'},
+                    {label: 'New prescription', href:'/dashboard/new-prescription'},
                 ]
             case 'RECEPTIONIST':
                 return [
