@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import '../../index.css'
 import '../../../src/styles/dashboard.css'
 import '../../../src/styles/vetdashboard.css'
@@ -12,15 +12,48 @@ import Form from "../../component/Form";
 
 function DashBoardHome(){
     const {user} = useContext(UserContext);
-    const [view, setView] = useState("list");
+    const email = user.email;
+    const [view, setView] = useState(null);
     const [selectedVisit, setSelectedVisit] = useState(null);
-    const visits = [
-        {date: '2024-10-12', time:'12:30', petName: 'Cookie', ownerName:'Catherine', ownerSurname:'Smith'},
-        {date: '2024-10-12', time:'12:30', petName: 'Cookie', ownerName:'Catherine', ownerSurname:'Smith'},
-        {date: '2024-10-12', time:'12:30', petName: 'Cookie', ownerName:'Catherine', ownerSurname:'Smith'},
-        {date: '2024-10-12', time:'12:30', petName: 'Cookie', ownerName:'Catherine', ownerSurname:'Smith'},
+    const [visits, setVisits] = useState([]);
 
-    ];
+    useEffect(() => {
+        const fetchVisits = async () => {
+            try {
+                const response = await fetch(
+                    `http://localhost:8080/visits/vet/incoming?email=${email}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const fetchedVisits = await response.json();
+                const tmpArr = fetchedVisits.map(visit => ({
+                    id: visit.id,
+                    date: visit.date,
+                    time: visit.startTime,
+                    vetName: visit.client.name,
+                    vetSurname: visit.client.surname,
+                    petName: visit.basePet.name,
+                }));
+
+                setVisits(tmpArr);
+                setView("list");
+            } catch (error) {
+                console.error("Error fetching visits:", error);
+            }
+        };
+
+        fetchVisits();
+    }, );
+
     const buttons = [
         {label: 'Incoming today', href:'/dashboard/incoming'},
         {label: 'My schedule', href:'/dashboard/my-schedule'},
@@ -53,8 +86,8 @@ function DashBoardHome(){
                                 id={visit.id}
                                 date={visit.date}
                                 time={visit.time}
-                                vetName={visit.ownerName}
-                                vetSurname={visit.ownerSurname}
+                                vetName={visit.vetName}
+                                vetSurname={visit.vetSurname}
                                 petName={visit.petName}
                                 icon="checkup"
                                 iconClass="vis-icon"
@@ -75,7 +108,7 @@ function DashBoardHome(){
                                     />
                                     <Form
                                         fields={formFieldsVaccination}
-                                        onFormSubmit={handleFormSubmit()}
+                                        onFormSubmit={handleFormSubmit}
                                         styleClass="formsHolder forms-longer"
                                         inputStyle="formInputs credentials"
                                         buttonMsg="add new vaccination"
