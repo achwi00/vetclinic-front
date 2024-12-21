@@ -15,6 +15,7 @@ import DashboardVisits from "./views/user_dashboard/DashboardVisits";
 import NewPrescriptionDashboard from "./views/vet_dashboard/NewPrescriptionDashboard";
 import DashboardIncomingToday from "./views/vet_dashboard/DashboardIncomingToday";
 import DashboardMySchedule from "./views/vet_dashboard/DashboardMySchedule";
+import DashboardAddVaccination from "./component/DashboardAddVaccination";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/dashboard/new-prescription" element={<NewPrescriptionDashboard/>}/>
           <Route path="/dashboard/incoming" element={<DashboardIncomingToday/>}/>
           <Route path="/dashboard/my-schedule" element={<DashboardMySchedule/>}/>
+          <Route path="/dashboard/add-vaccination" element={<DashboardAddVaccination/>} />
         </Routes>
       </Router>
     </UserProvider>
