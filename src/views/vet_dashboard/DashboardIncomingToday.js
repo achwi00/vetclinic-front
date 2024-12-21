@@ -7,10 +7,13 @@ import {UserContext} from "../../UserContext";
 import List from "../../component/List";
 import Visit from "../../component/Visit";
 import DetailedVisit from "../../component/DetailedVisit";
+import IconDisplayer from "../../component/IconDisplayer";
+import Form from "../../component/Form";
 
 function DashBoardHome(){
     const {user} = useContext(UserContext);
     const [view, setView] = useState("list");
+    const [selectedVisit, setSelectedVisit] = useState(null);
     const visits = [
         {date: '2024-10-12', time:'12:30', petName: 'Cookie', ownerName:'Catherine', ownerSurname:'Smith'},
         {date: '2024-10-12', time:'12:30', petName: 'Cookie', ownerName:'Catherine', ownerSurname:'Smith'},
@@ -23,13 +26,26 @@ function DashBoardHome(){
         {label: 'My schedule', href:'/dashboard/my-schedule'},
         {label: 'New prescription', href:'/dashboard/new-prescription'},
     ]
+    const formFieldsVaccination = [
+        { name: 'pet', placeholder: 'Pet name', type: 'text', required: true},
+        { name: 'medication', placeholder: 'Medication', type: 'text', required: true },
+        { name: 'numOfPets', placeholder: 'Pets affected', type: 'number', required: true }
+    ]
+    const handleFormSubmit = async (formData) => {
 
+    }
+
+    // Function to handle view change and store selected visit details
+    const handleAddDetails = (visit) => {
+        setSelectedVisit(visit);
+        setView("add-vaccination");
+    };
     return(
         <div className="all-holder">
             <SideMenu buttons={buttons}/>
             <div className="content-holder">
                 <div className="centring-main">
-                    <h2 className="site-tracker">IncomingToday</h2>
+                    <h2 className="site-tracker">Incoming today</h2>
                     {view === "list" && <List
                         items = {visits.map((visit, index) => (
                             <DetailedVisit
@@ -43,11 +59,35 @@ function DashBoardHome(){
                                 icon="checkup"
                                 iconClass="vis-icon"
                                 type="completed"
+                                onAddDetails={() => handleAddDetails(visit)}
                             />
                         ))}
                         styleClass={"list-holder"}
                         itemsPerPage={4}
                     />}
+                    {view === "add-vaccination" &&
+                        <div className="choice-panel-holder">
+                            <div className="choice-panel">
+                                <div className="choice left choice-grow">
+                                    <IconDisplayer
+                                        iconName="vaccine"
+                                        styleClass="service-icon"
+                                    />
+                                    <Form
+                                        fields={formFieldsVaccination}
+                                        onFormSubmit={handleFormSubmit()}
+                                        styleClass="formsHolder forms-longer"
+                                        inputStyle="formInputs credentials"
+                                        buttonMsg="add new vaccination"
+                                        buttonClass="formInputs form-btn"
+                                    />
+
+                                </div>
+                                <div className="right choice-shrink">
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
