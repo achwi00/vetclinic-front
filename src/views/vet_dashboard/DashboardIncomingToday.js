@@ -36,8 +36,9 @@ function DashBoardHome() {
                     id: visit.id,
                     date: visit.date,
                     time: visit.startTime,
-                    vetName: visit.client.name,
-                    vetSurname: visit.client.surname,
+                    clientName: visit.client.name,
+                    clientSurname: visit.client.surname,
+                    clientEmail: visit.client.email,
                     petName: visit.basePet.name,
                 }));
 
@@ -73,8 +74,8 @@ function DashBoardHome() {
                                 id={visit.id}
                                 date={visit.date}
                                 time={visit.time}
-                                vetName={visit.vetName}
-                                vetSurname={visit.vetSurname}
+                                vetName={visit.clientName}
+                                vetSurname={visit.clientSurname}
                                 petName={visit.petName}
                                 icon="checkup"
                                 iconClass="vis-icon"

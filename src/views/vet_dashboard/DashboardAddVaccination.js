@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 import { useLocation } from "react-router-dom";
-import Form from "../component/Form";
-import IconDisplayer from "../component/IconDisplayer";
-import SideMenu from "./SideMenu";
-import List from "./List";
-import DetailedVisit from "./DetailedVisit";
-import InnerNav from "./InnerNav";
+import Form from "../../component/Form";
+import IconDisplayer from "../../component/IconDisplayer";
+import SideMenu from "../../component/SideMenu";
+import InnerNav from "../../component/InnerNav";
 
 function DashboardAddVaccination() {
 

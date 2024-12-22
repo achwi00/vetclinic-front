@@ -15,7 +15,7 @@ import DashboardVisits from "./views/user_dashboard/DashboardVisits";
 import NewPrescriptionDashboard from "./views/vet_dashboard/NewPrescriptionDashboard";
 import DashboardIncomingToday from "./views/vet_dashboard/DashboardIncomingToday";
 import DashboardMySchedule from "./views/vet_dashboard/DashboardMySchedule";
-import DashboardAddVaccination from "./component/DashboardAddVaccination";
+import DashboardAddVaccination from "./views/vet_dashboard/DashboardAddVaccination";
 
 function App() {
   return (

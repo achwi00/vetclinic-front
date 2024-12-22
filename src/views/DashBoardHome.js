@@ -15,12 +15,12 @@ function DashBoardHome(){
                     {label: 'New visit', href:'/dashboard/new-visit'},
                     {label: 'My pets', href:'/dashboard/my-pets'},
                     {label: 'My pet groups', href:'/dashboard/my-pet-groups'},
-                    {label: 'Visits', href:'#'},
+                    {label: 'Visits', href:'/dashboard/visits'},
                 ]
             case 'VET':
                 return [
-                    {label: 'Incoming today', href:'#'},
-                    {label: 'My schedule', href:'#'},
+                    {label: 'Incoming today', href:'/dashboard/incoming'},
+                    {label: 'My schedule', href:'/dashboard/my-schedule'},
                     {label: 'New prescription', href:'/dashboard/new-prescription'},
                 ]
             case 'RECEPTIONIST':
