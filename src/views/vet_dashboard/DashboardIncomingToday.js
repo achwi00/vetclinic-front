@@ -34,8 +34,8 @@ function DashBoardHome() {
                 const fetchedVisits = await response.json();
                 const tmpArr = fetchedVisits.map(visit => ({
                     id: visit.id,
-                    date: visit.date,
-                    time: visit.startTime,
+                    date: visit.startTime + ` to`,
+                    time: visit.endTime,
                     clientName: visit.client.name,
                     clientSurname: visit.client.surname,
                     clientEmail: visit.client.email,
