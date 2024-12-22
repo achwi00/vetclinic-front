@@ -10,6 +10,7 @@ function DashboardAddVaccination() {
     const location = useLocation();
     const visit = location.state?.visit; // Retrieve the visit object from route state
     const [view, setView] = useState("vaccination");
+    const [response, setResponse] = useState(null);
     const buttons = [
         { label: 'Incoming today', href: '/dashboard/incoming' },
         { label: 'My schedule', href: '/dashboard/my-schedule' },
@@ -39,26 +40,85 @@ function DashboardAddVaccination() {
         {id: 'treatment-btn', label:'Add treatment', view:'treatment', onClick: newTreatment},
         {id: 'surgery-btn', label:'Add surgery', view: 'surgery', onClick: newSurgery}
     ]
+    const medicationOptions = [
+        { value: 'Amoxicillin', label: 'Amoxicillin' },
+        { value: 'Alprazolam', label: 'Alprazolam' },
+        { value: 'Benazepril', label: 'Benazepril' },
+        { value: 'BVit', label: 'BVit' },
+        { value: 'ImoVAX Rabbies', label: 'ImoVAX Rabbies' },
+        { value: 'K-9 Advantix', label: 'K-9 Advantix' },
+    ];
     const formFieldsVaccination = [
-        { name: 'medication', placeholder: 'Medication', type: 'text', required: true },
-        { name: 'numOfPets', placeholder: 'Pets affected', type: 'number', required: true },
+        {
+            name: 'medication',
+            placeholder: 'Select medication',
+            type: 'select',
+            options: medicationOptions,
+            required: true
+        },
+        { name: 'numOfPets', placeholder: 'Pets affected', type: 'number', required: true, min:'1' },
     ];
 
     const formFieldsTreatment = [
-        { name: 'medication', placeholder: 'Medication', type: 'text', required: true },
-        { name: 'numOfPets', placeholder: 'Pets affected', type: 'number', required: true },
+        {
+            name: 'medication',
+            placeholder: 'Select medication',
+            type: 'select',
+            options: medicationOptions,
+            required: true
+        },
+        { name: 'numOfPets', placeholder: 'Pets affected', type: 'number', required: true, min:'1' },
         { name: 'description', placeholder: 'Description', type: 'textarea', required: true },
         { name: 'startDate', placeholder: 'Start date', type: 'date', required: true },
         { name: 'endDate', placeholder: 'End Date', type: 'date', required: true },
     ];
 
     const formFieldsSurgery = [
-        { name: 'numOfPets', placeholder: 'Pets affected', type: 'number', required: true },
+        { name: 'numOfPets', placeholder: 'Pets affected', type: 'number', required: true, min:'1' },
         { name: 'description', placeholder: 'Description', type: 'textarea', required: true },
     ];
 
 
-    const handleFormSubmit = async (formData) => {
+    const handleNewVaccinationSubmit = async (formData) => {
+        console.log("Submitted Form Data:", formData);
+        console.log("Visit Details:", visit);
+        // Handle the form submission logic here
+        try {
+            const response = await fetch("http://localhost:8080/add-vaccination", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    medicationName: formData.medication,
+                    visitId: visit.id,
+                    numOfPets: formData.numOfPets
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to add vaccination: ${response.status}`);
+            }
+            setResponse("Vaccination added successfully.");
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error adding vaccination:", error);
+            setResponse("Failed to add vaccination.");
+        }
+        finally{
+            setView("response")
+        }
+
+    };
+
+    const handleNewTreatmentSubmit = async (formData) => {
+        console.log("Submitted Form Data:", formData);
+        console.log("Visit Details:", visit);
+        // Handle the form submission logic here
+    };
+
+    const handleNewSurgerySubmit = async (formData) => {
         console.log("Submitted Form Data:", formData);
         console.log("Visit Details:", visit);
         // Handle the form submission logic here
@@ -86,7 +146,7 @@ function DashboardAddVaccination() {
                                     />
                                     <Form
                                         fields={formFieldsVaccination}
-                                        onFormSubmit={handleFormSubmit}
+                                        onFormSubmit={handleNewVaccinationSubmit}
                                         styleClass="formsHolder"
                                         inputStyle="formInputs credentials"
                                         buttonMsg="add new vaccination"
@@ -102,10 +162,10 @@ function DashboardAddVaccination() {
                                     />
                                     <Form
                                         fields={formFieldsTreatment}
-                                        onFormSubmit={handleFormSubmit}
+                                        onFormSubmit={handleNewTreatmentSubmit}
                                         styleClass="formsHolder forms-longer"
                                         inputStyle="formInputs credentials"
-                                        buttonMsg="add new vaccination"
+                                        buttonMsg="add new treatment"
                                         buttonClass="formInputs form-btn"
                                     />
                                 </div>
@@ -118,12 +178,22 @@ function DashboardAddVaccination() {
                                     />
                                     <Form
                                         fields={formFieldsSurgery}
-                                        onFormSubmit={handleFormSubmit}
+                                        onFormSubmit={handleNewSurgerySubmit}
                                         styleClass="formsHolder"
                                         inputStyle="formInputs credentials"
-                                        buttonMsg="add new vaccination"
+                                        buttonMsg="add new surgery"
                                         buttonClass="formInputs form-btn"
                                     />
+                                </div>
+                            }
+                            {view === "response" &&
+                                <div className="choice-panel-holder">
+                                    <div className="choice-panel choice-response">
+                                        <p className="response-p">{response}</p>
+                                        {/*<div className="success-paw">*/}
+                                        {/*    <img src={"../imgs/paw-right.svg"} alt={"paw"} />*/}
+                                        {/*</div>*/}
+                                    </div>
                                 </div>
                             }
                             <div className="right choice-shrink"></div>
