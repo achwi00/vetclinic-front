@@ -79,9 +79,7 @@ function DashboardAddVaccination() {
 
 
     const handleNewVaccinationSubmit = async (formData) => {
-        console.log("Submitted Form Data:", formData);
-        console.log("Visit Details:", visit);
-        // Handle the form submission logic here
+
         try {
             const response = await fetch("http://localhost:8080/add-vaccination", {
                 method: "POST",
@@ -112,9 +110,6 @@ function DashboardAddVaccination() {
     };
 
     const handleNewTreatmentSubmit = async (formData) => {
-        console.log("Submitted Form Data:", formData);
-        console.log("Visit Details:", visit);
-        // Handle the form submission logic here
 
         try {
             const response = await fetch("http://localhost:8080/add-treatment", {
@@ -151,6 +146,34 @@ function DashboardAddVaccination() {
         console.log("Submitted Form Data:", formData);
         console.log("Visit Details:", visit);
         // Handle the form submission logic here
+
+        try {
+            const response = await fetch("http://localhost:8080/add-surgery", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    visitId: visit.id,
+                    numOfPets: formData.numOfPets,
+                    description: formData.description,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to add surgery: ${response.status}`);
+            }
+            setResponse("Surgery added successfully.");
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error adding surgery:", error);
+            setResponse("Failed to add surgery.");
+        }
+        finally{
+            setView("response")
+        }
+
     };
 
     return (
