@@ -20,8 +20,7 @@ function DashBoardHome(){
             case 'VET':
                 return [
                     {label: 'Incoming today', href:'/dashboard/incoming'},
-                    {label: 'My schedule', href:'/dashboard/my-schedule'},
-                    {label: 'New prescription', href:'/dashboard/new-prescription'},
+                    {label: 'My schedule', href:'/dashboard/my-schedule'}
                 ]
             case 'RECEPTIONIST':
                 return [

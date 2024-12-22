@@ -54,7 +54,6 @@ function DashBoardHome() {
     const buttons = [
         { label: 'Incoming today', href: '/dashboard/incoming' },
         { label: 'My schedule', href: '/dashboard/my-schedule' },
-        { label: 'New prescription', href: '/dashboard/new-prescription' },
     ];
 
     const handleAddDetails = (visit) => {

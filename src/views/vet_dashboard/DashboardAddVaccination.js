@@ -14,7 +14,6 @@ function DashboardAddVaccination() {
     const buttons = [
         { label: 'Incoming today', href: '/dashboard/incoming' },
         { label: 'My schedule', href: '/dashboard/my-schedule' },
-        { label: 'New prescription', href: '/dashboard/new-prescription' },
     ];
     const newVaccination = async () => {
         document.getElementById('treatment-btn').style.backgroundColor = '#E8C1CE';
