@@ -16,6 +16,8 @@ import NewPrescriptionDashboard from "./views/vet_dashboard/NewPrescriptionDashb
 import DashboardIncomingToday from "./views/vet_dashboard/DashboardIncomingToday";
 import DashboardMySchedule from "./views/vet_dashboard/DashboardMySchedule";
 import DashboardAddVaccination from "./views/vet_dashboard/DashboardAddVaccination";
+import DashboardVisitSchedules from "./views/receptionist_dashboard/DashboardVisitSchedules";
+import DashboardNewVisitForReception from "./views/receptionist_dashboard/DashboardNewVisitForReception";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
           <Route path="/dashboard/incoming" element={<DashboardIncomingToday/>}/>
           <Route path="/dashboard/my-schedule" element={<DashboardMySchedule/>}/>
           <Route path="/dashboard/add-vaccination" element={<DashboardAddVaccination/>} />
+          <Route path="/dashboard/schedules" element={<DashboardVisitSchedules/>} />
+          <Route path="/dashboard/new-visit/reception" element={<DashboardNewVisitForReception/>} />
         </Routes>
       </Router>
     </UserProvider>

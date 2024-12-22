@@ -24,8 +24,8 @@ function DashBoardHome(){
                 ]
             case 'RECEPTIONIST':
                 return [
-                    {label: 'Schedules', href: '#'},
-                    {label: 'New visit', href: '#'}
+                    {label: 'Schedules', href: '/dashboard/schedules'},
+                    {label: 'New visit', href: '/dashboard/new-visit/reception'}
                 ]
             default:
                 return []

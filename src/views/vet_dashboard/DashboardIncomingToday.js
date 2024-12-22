@@ -28,7 +28,7 @@ function DashBoardHome() {
                 );
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 const fetchedVisits = await response.json();
