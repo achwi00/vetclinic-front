@@ -115,6 +115,36 @@ function DashboardAddVaccination() {
         console.log("Submitted Form Data:", formData);
         console.log("Visit Details:", visit);
         // Handle the form submission logic here
+
+        try {
+            const response = await fetch("http://localhost:8080/add-treatment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    medicationName: formData.medication,
+                    visitId: visit.id,
+                    numOfPets: formData.numOfPets,
+                    description: formData.description,
+                    startDate: formData.startDate,
+                    endDate: formData.endDate
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to add treatment: ${response.status}`);
+            }
+            setResponse("Treatment added successfully.");
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error adding treatment:", error);
+            setResponse("Failed to add treatment.");
+        }
+        finally{
+            setView("response")
+        }
     };
 
     const handleNewSurgerySubmit = async (formData) => {
