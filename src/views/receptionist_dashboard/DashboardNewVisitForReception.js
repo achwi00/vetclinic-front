@@ -17,11 +17,12 @@ function DashboardNewVisitForReception(){
         {label: 'New visit', href:'/dashboard/new-visit/reception'},
     ]
     const formFields = [
-        { name: 'email', placeholder: 'User email', type: 'email', required: true },
+        { name: 'userEmail', placeholder: 'User email', type: 'email', required: true },
         { name: 'petName', placeholder: 'Pet name', type: 'text', required: true },
         { name: 'date', placeholder: 'Visit date', type: 'date', required: true },
         { name: 'startTime', dataplaceholder: 'Start time', type: 'time',  required: true },
         { name: 'endTime', dataplaceholder: 'End time', type: 'time', required: true },
+        { name: 'vetEmail', placeholder: 'Vet email', type: 'text', required: true },
     ]
     const handleFormSubmit = async (formData) => {}
     return(
@@ -44,7 +45,7 @@ function DashboardNewVisitForReception(){
                                     <Form
                                         fields={formFields}
                                         onFormSubmit={handleFormSubmit}
-                                        styleClass="formsHolder forms-longer"
+                                        styleClass="formsHolder forms-longest"
                                         inputStyle="formInputs credentials"
                                         buttonMsg="book"
                                         buttonClass="formInputs form-btn"
