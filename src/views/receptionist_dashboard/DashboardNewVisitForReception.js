@@ -10,7 +10,7 @@ import Form from "../../component/Form";
 function DashboardNewVisitForReception(){
     const {user} = useContext(UserContext);
     const [view, setView] = useState("panel");
-    const [res, setResponse] = useState(null);
+    const [response, setResponse] = useState(null);
 
     const buttons = [
         {label: 'Schedules', href:'/dashboard/schedules'},
@@ -24,7 +24,38 @@ function DashboardNewVisitForReception(){
         { name: 'endTime', dataplaceholder: 'End time', type: 'time', required: true },
         { name: 'vetEmail', placeholder: 'Vet email', type: 'text', required: true },
     ]
-    const handleFormSubmit = async (formData) => {}
+    const handleFormSubmit = async (formData) => {
+
+        try {
+            const response = await fetch("http://localhost:8080/visits/custom-visit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userEmail: formData.userEmail,
+                    petName: formData.petName,
+                    date: formData.date,
+                    startTime: formData.startTime,
+                    endTime: formData.endTime,
+                    vetEmail: formData.vetEmail
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to add custom visit: ${response.status}`);
+            }
+            setResponse("Custom visit added successfully.");
+
+            // Optional: Handle UI updates or notifications here
+        } catch (error) {
+            console.error("Error adding custom visit:", error);
+            setResponse("Failed to add custom visit.");
+        }
+        finally{
+            setView("response")
+        }
+    }
     return(
         <div className="all-holder">
             <SideMenu buttons={buttons}/>
@@ -51,6 +82,16 @@ function DashboardNewVisitForReception(){
                                         buttonClass="formInputs form-btn"
                                     />
                                 </div>
+                            </div>
+                        </div>
+                    }
+                    {view === "response" &&
+                        <div className="choice-panel-holder">
+                            <div className="choice-panel choice-response">
+                                <p className="response-p">{response}</p>
+                                {/*<div className="success-paw">*/}
+                                {/*    <img src={"../imgs/paw-right.svg"} alt={"paw"} />*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     }
