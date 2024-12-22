@@ -51,6 +51,7 @@ function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleC
                                 className={inputStyle}
                                 name={field.name}
                                 placeholder={field.placeholder}
+                                dataplaceholder={field.dataplaceholder}
                                 value={formData[field.name] || ''}
                                 onChange={(e) => handleChange(e, field.name)}
                                 required={field.required || false}

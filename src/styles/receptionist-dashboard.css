@@ -1,0 +1,22 @@
+:root{
+    --main-color: #F9F0F3;
+    --lively-pink: #B9466C;
+    --washed-out-pink: #f3e2e8;
+    --plum: #6F2A41;
+    --almost-white: #FCF9FA;
+    --violet-pink: #D99CB0;
+    --mid-pink: #E8C1CE;
+    --dreamy-pink: #F1D9E1;
+}
+
+input[type="time"]:invalid:before {
+    content: attr(dataplaceholder);
+    position: absolute;
+    background: white;
+    width: 20%;
+}
+
+input[type="time"]:focus:before {
+    width: 0;
+    content: '';
+}
