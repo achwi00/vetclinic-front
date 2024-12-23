@@ -1,31 +1,44 @@
-import React, {useContext, useState} from "react";
-import '../../index.css'
-import '../../../src/styles/receptionist-dashboard.css'
-import '../../../src/styles/dashboard.css'
+import React, { useContext, useEffect, useState, useMemo } from "react";
+import '../../index.css';
+import '../../../src/styles/receptionist-dashboard.css';
+import '../../../src/styles/dashboard.css';
 import SideMenu from "../../component/SideMenu";
-import {UserContext} from "../../UserContext";
+import { UserContext } from "../../UserContext";
 import IconDisplayer from "../../component/IconDisplayer";
 import Form from "../../component/Form";
 
-function DashboardNewVisitForReception(){
-    const {user} = useContext(UserContext);
-    const [view, setView] = useState("panel");
+function DashboardNewVisitForReception() {
+    const { user } = useContext(UserContext);
+    const [view, setView] = useState("response");
     const [response, setResponse] = useState(null);
+    const [vetEmails, setVetEmails] = useState([]);
 
     const buttons = [
-        {label: 'Schedules', href:'/dashboard/schedules'},
-        {label: 'New visit', href:'/dashboard/new-visit/reception'},
-    ]
-    const formFields = [
-        { name: 'userEmail', placeholder: 'User email', type: 'email', required: true },
-        { name: 'petName', placeholder: 'Pet name', type: 'text', required: true },
-        { name: 'date', placeholder: 'Visit date', type: 'date', required: true },
-        { name: 'startTime', dataplaceholder: 'Start time', type: 'time',  required: true },
-        { name: 'endTime', dataplaceholder: 'End time', type: 'time', required: true },
-        { name: 'vetEmail', placeholder: 'Vet email', type: 'text', required: true },
-    ]
-    const handleFormSubmit = async (formData) => {
+        { label: 'Schedules', href: '/dashboard/schedules' },
+        { label: 'New visit', href: '/dashboard/new-visit/reception' },
+    ];
 
+    useEffect(() => {
+        const fetchVetEmails = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/vet-emails"); // Adjust the endpoint
+                if (!response.ok) {
+                     new Error("Failed to fetch vet emails");
+                }
+                const emails = await response.json(); // Assuming response is a list of emails
+                console.log(emails);
+                const adjustedEmails = emails.map(email => ({ value: email, label: email }));
+                setVetEmails(adjustedEmails);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchVetEmails()
+        setView("panel");
+    }, []);
+
+    const handleFormSubmit = async (formData) => {
         try {
             const response = await fetch("http://localhost:8080/visits/custom-visit", {
                 method: "POST",
@@ -38,7 +51,7 @@ function DashboardNewVisitForReception(){
                     date: formData.date,
                     startTime: formData.startTime,
                     endTime: formData.endTime,
-                    vetEmail: formData.vetEmail
+                    vetEmail: formData.vetEmail,
                 }),
             });
 
@@ -46,28 +59,40 @@ function DashboardNewVisitForReception(){
                 throw new Error(`Failed to add custom visit: ${response.status}`);
             }
             setResponse("Custom visit added successfully.");
-
-            // Optional: Handle UI updates or notifications here
         } catch (error) {
             console.error("Error adding custom visit:", error);
             setResponse("Failed to add custom visit.");
+        } finally {
+            setView("response");
         }
-        finally{
-            setView("response")
-        }
-    }
-    return(
+    };
+
+    // Dynamically create the form fields
+    const formFields = useMemo(() => [
+        { name: "userEmail", placeholder: "User email", type: "email", required: true },
+        { name: "petName", placeholder: "Pet name", type: "text", required: true },
+        { name: "date", placeholder: "Visit date", type: "date", required: true },
+        { name: "startTime", dataplaceholder: "Start time", type: "time", required: true },
+        { name: "endTime", dataplaceholder: "End time", type: "time", required: true },
+        {
+            name: "vetEmail",
+            placeholder: "Vet email",
+            type: "options",
+            options: vetEmails, // Use the updated vetEmails
+            required: true,
+        },
+    ], [vetEmails]);
+
+    return (
         <div className="all-holder">
-            <SideMenu buttons={buttons}/>
+            <SideMenu buttons={buttons} />
             <div className="content-holder">
                 <div className="centring-main">
                     <h2 className="site-tracker">New visit</h2>
-                    {view ==="panel" &&
+                    {view === "panel" &&
                         <div className="choice-panel-holder">
                             <div className="choice-panel">
-                                <div className="left choice-shrink">
-
-                                </div>
+                                <div className="left choice-shrink"></div>
                                 <div className="choice right choice-grow">
                                     <IconDisplayer
                                         iconName="checkup"
@@ -89,9 +114,6 @@ function DashboardNewVisitForReception(){
                         <div className="choice-panel-holder">
                             <div className="choice-panel choice-response">
                                 <p className="response-p">{response}</p>
-                                {/*<div className="success-paw">*/}
-                                {/*    <img src={"../imgs/paw-right.svg"} alt={"paw"} />*/}
-                                {/*</div>*/}
                             </div>
                         </div>
                     }
@@ -100,4 +122,5 @@ function DashboardNewVisitForReception(){
         </div>
     );
 }
+
 export default DashboardNewVisitForReception;
