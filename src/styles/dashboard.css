@@ -151,14 +151,4 @@
 .forms-longest{
     height: 62%;
 }
-.calendar-holder{
-    height: 50%;
-    width: 90%;
-}
-/*Overriden react big calendar styles*/
-.rbc-today {
-    background-color: var(--violet-pink) !important;
-}
-.rbc-off-range-bg{
-    background-color: var(--washed-out-pink) !important;
-}
+

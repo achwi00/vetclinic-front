@@ -19,8 +19,6 @@ import DashboardAddVaccination from "./views/vet_dashboard/DashboardAddVaccinati
 import DashboardVisitSchedules from "./views/receptionist_dashboard/DashboardVisitSchedules";
 import DashboardNewVisitForReception from "./views/receptionist_dashboard/DashboardNewVisitForReception";
 
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-
 function App() {
   return (
     <UserProvider>
