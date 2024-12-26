@@ -14,7 +14,11 @@ import '../../../src/styles/schedules-styles.css'
 
 function DashBoardHome(){
     const {user} = useContext(UserContext);
-
+    const events = [
+        {visitId: 1, date: '2024-12-30',
+            start: new Date(2024, 11, 30, 14, 30),
+            end: new Date(2024, 11, 30, 15, 0), title: 'Eva Smith'}
+    ]
     const buttons = [
         {label: 'Incoming today', href:'/dashboard/incoming'},
         {label: 'My schedule', href:'/dashboard/my-schedule'},
@@ -40,6 +44,7 @@ function DashBoardHome(){
                     <div className="calendar-holder">
                         <Calendar
                             localizer={localizer}
+                            events={events}
                             startAccessor="start"
                             endAccessor="end"
                             style={{ height: 500 }}

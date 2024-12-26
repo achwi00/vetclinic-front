@@ -19,3 +19,6 @@
 .rbc-off-range-bg{
     background-color: var(--washed-out-pink);
 }
+.rbc-event{
+    background-color: var(--plum);
+}
