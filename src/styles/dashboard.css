@@ -1,3 +1,4 @@
+
 :root{
     --main-color: #F9F0F3;
     --lively-pink: #B9466C;
@@ -8,6 +9,7 @@
     --mid-pink: #E8C1CE;
     --dreamy-pink: #F1D9E1;
 }
+
 .side-menu-holder{
     display: flex;
     align-items: center;
@@ -148,4 +150,15 @@
 }
 .forms-longest{
     height: 62%;
+}
+.calendar-holder{
+    height: 50%;
+    width: 90%;
+}
+/*Overriden react big calendar styles*/
+.rbc-today {
+    background-color: var(--violet-pink) !important;
+}
+.rbc-off-range-bg{
+    background-color: var(--washed-out-pink) !important;
 }
