@@ -75,6 +75,7 @@ function DashBoardHome() {
                                 time={visit.time}
                                 vetName={visit.clientName}
                                 vetSurname={visit.clientSurname}
+                                clientEmail={visit.clientEmail}
                                 petName={visit.petName}
                                 icon="checkup"
                                 iconClass="vis-icon"

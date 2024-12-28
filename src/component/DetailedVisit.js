@@ -1,11 +1,18 @@
 import React, {useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import IconDisplayer from "./IconDisplayer";
 import {UserContext} from "../UserContext";
 import '../../src/styles/visit.css'
 import '../../src/styles/vetdashboard.css'
 
-function DetailedVisit({id, date, time, vetName, vetSurname, petName, classStyle, icon, iconClass, type, onAddDetails}) {
+function DetailedVisit({id, date, time, vetName, vetSurname, petName, classStyle, icon, iconClass, type, onAddDetails, clientEmail}) {
     const {user} = useContext(UserContext);
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        navigate("/dashboard/vet/pet-details", { state: { petName, clientEmail } });
+    };
 
     return(
         <div className="visit vis-detailed">
@@ -27,7 +34,9 @@ function DetailedVisit({id, date, time, vetName, vetSurname, petName, classStyle
                     </div>
                 </div>
                 <div className="inner-right-visit">
-
+                    <button className="btn book-cancel-btn"
+                            onClick={handleButtonClick}
+                    >pet details</button>
                 </div>
             </div>
             <div className="more-details" onClick={onAddDetails}>

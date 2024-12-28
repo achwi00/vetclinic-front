@@ -18,6 +18,7 @@ import DashboardMySchedule from "./views/vet_dashboard/DashboardMySchedule";
 import DashboardAddVaccination from "./views/vet_dashboard/DashboardAddVaccination";
 import DashboardVisitSchedules from "./views/receptionist_dashboard/DashboardVisitSchedules";
 import DashboardNewVisitForReception from "./views/receptionist_dashboard/DashboardNewVisitForReception";
+import DashboardPetDetailsForVet from "./views/vet_dashboard/DashboardPetDetailsForVet";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/dashboard/add-vaccination" element={<DashboardAddVaccination/>} />
           <Route path="/dashboard/schedules" element={<DashboardVisitSchedules/>} />
           <Route path="/dashboard/new-visit/reception" element={<DashboardNewVisitForReception/>} />
+          <Route path="/dashboard/vet/pet-details" element={<DashboardPetDetailsForVet/>} />
         </Routes>
       </Router>
     </UserProvider>
