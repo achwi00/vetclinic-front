@@ -55,9 +55,9 @@ function DashBoardHome(){
 
     }, [email]);
 
-    useEffect(() => {
-        console.log("Updated Visits:", visits);
-    }, [visits]); // Runs whenever visits are updated
+    // useEffect(() => {
+    //     console.log("Updated Visits:", visits);
+    // }, [visits]); // Runs whenever visits are updated
 
     const events = [
         {visitId: 1, date: '2024-12-30',

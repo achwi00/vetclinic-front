@@ -26,7 +26,7 @@ function SideMenu({buttons}){
                 </div>
                 <div className="bottom-panel-holder">
                     <div className="msg">
-                        <h3>Hello, Name</h3>
+                        <h3>Hello, Mark</h3>
                     </div>
                     <RoundButton
                         label="log out"
