@@ -6,7 +6,7 @@ function UpperMenu() {
     const buttons = [
         {label: 'Services', href:'#services'},
         {label: 'About us', href:'#about-us'},
-        {label: 'Contact', href:'#contact'},
+        // {label: 'Contact', href:'#contact'},
     ]
     return(
         <div className="upper-menu">
