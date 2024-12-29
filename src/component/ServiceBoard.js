@@ -32,6 +32,7 @@ function ServiceBoard(){
                         />
                     ))}
                 </div>
+                <div className="gap-filler"></div>
             </div>
         </div>
     );

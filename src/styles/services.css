@@ -39,3 +39,7 @@
     color: var(--plum);
     font-weight: normal;
 }
+.gap-filler{
+    height: 10vh;
+    width: 100%;
+}
