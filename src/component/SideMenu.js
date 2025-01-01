@@ -1,11 +1,44 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import '../../src/styles/dashboard.css'
 import RoundButton from "./RoundButton";
 import {UserContext} from "../UserContext";
-import {useNavigate} from "react-router-dom";
 
 function SideMenu({buttons}){
     const {user} = useContext(UserContext);
+    const email = user.email;
+    const [name, setName] = useState("Name");
+
+    useEffect(() => {
+        const fetchVisits = async () => {
+            try {
+                const response = await fetch(
+                    `http://localhost:8080/name?uMail=${email}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+
+                if (!response.ok) {
+                    new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const fetchedName = await response.text();
+                if(response.ok){
+                    setName(fetchedName);
+                }
+            } catch (error) {
+                console.error("Error fetching visits:", error);
+                setName("User");
+            }
+        }
+
+        fetchVisits();
+
+    },[email]);
+
     async function logout() {
         Object.assign(user, null);
         try {
@@ -54,7 +87,7 @@ function SideMenu({buttons}){
                 </div>
                 <div className="bottom-panel-holder">
                     <div className="msg">
-                        <h3>Hello, Name</h3>
+                        <h3>Hello, {name}</h3>
                     </div>
                     <RoundButton
                         label="log out"

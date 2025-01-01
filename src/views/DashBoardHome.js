@@ -38,7 +38,7 @@ function DashBoardHome(){
             <SideMenu buttons={buttons}/>
             <div className="content-holder">
                 <div className="centring-main">
-                    <h2 className="site-tracker">Home to {user.email}</h2>
+                    <h2 className="site-tracker">Home</h2>
                 </div>
             </div>
         </div>

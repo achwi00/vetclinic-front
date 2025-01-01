@@ -89,6 +89,9 @@
     font-size: 2.3vh;
     text-align: center;
 }
+.log-out-btn:hover{
+    background-color: var(--plum);
+}
 .centring-main{
     display:flex;
     flex-direction: column;

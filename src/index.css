@@ -103,6 +103,9 @@ h2{
   width: 8vw;
   font-size: large;
 }
+.log-button:hover{
+  background-color: var(--plum);
+}
 .box{
   display: flex;
   flex-direction: column;
