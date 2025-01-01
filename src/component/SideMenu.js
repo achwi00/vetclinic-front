@@ -1,8 +1,36 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import '../../src/styles/dashboard.css'
 import RoundButton from "./RoundButton";
+import {UserContext} from "../UserContext";
+import {useNavigate} from "react-router-dom";
 
 function SideMenu({buttons}){
+    const {user} = useContext(UserContext);
+    async function logout() {
+        Object.assign(user, null);
+        try {
+            // Call the logout endpoint
+            const response = await fetch('http://localhost:8080/logout', {
+                method: 'POST',
+                credentials: 'include', // Ensures cookies are sent with the request
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                console.log('Logout successful');
+
+                // Clear user context
+                Object.assign(user, null);
+            } else {
+                console.error('Failed to logout:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
+
+    }
     return(
       <>
           <div className="side-menu-holder">
@@ -30,8 +58,9 @@ function SideMenu({buttons}){
                     </div>
                     <RoundButton
                         label="log out"
-                        href={"#"}
+                        href={"/"}
                         styleClass="log-out-btn"
+                        onClick={logout}
                     />
                 </div>
               </div>
