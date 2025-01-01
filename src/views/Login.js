@@ -80,6 +80,7 @@ function Login() {
                     buttonMsg="log in"
                     buttonClass="formInputs form-btn"
                     showIcon={true}
+                    type="log"
                 />
             </div>
         </div>

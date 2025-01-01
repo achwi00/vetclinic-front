@@ -20,6 +20,7 @@ function Register(){
                     buttonMsg="register"
                     buttonClass="formInputs form-btn"
                     showIcon={true}
+                    type="register"
                 />
             </div>
             <div className="log-register-containers right-register">

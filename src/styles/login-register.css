@@ -115,3 +115,18 @@
 .form-btn:hover{
    background-color: var(--plum);
 }
+.log-register-message-holder{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: normal;
+}
+.log-register-message-holder a{
+    padding-bottom: 0;
+    color: var(--lively-pink);
+    font-weight: bold;
+}
+.log-register-message-holder a:hover{
+    text-decoration: underline;
+}

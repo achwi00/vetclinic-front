@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IconDisplayer from "./IconDisplayer";
 
-function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleClass, showIcon }) {
+function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleClass, showIcon, type }) {
     const [formData, setFormData] = useState(
         fields.reduce((acc, field) => ({ ...acc, [field.name]: '' }), {})
     );
@@ -61,6 +61,16 @@ function Form({ fields, onFormSubmit, inputStyle, buttonMsg, buttonClass, styleC
                 ))}
                 <button type="submit" className={buttonClass}>{buttonMsg}</button>
             </form>
+            {type === "log" &&
+                <div className={"log-register-message-holder"}>
+                    <p>New user?&nbsp;</p><a href={"/register"}>Sign up.</a>
+                </div>
+            }
+            {type === "register" &&
+                <div className={"log-register-message-holder"}>
+                    <p>Already a user?&nbsp;</p><a href={"/login"}>Log in.</a>
+                </div>
+            }
         </div>
     );
 }
