@@ -30,7 +30,7 @@ function Register(){
                     </div>
                     <div className="log-register-info">
                         <h1>Register.</h1>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <p>Create an account and start using our app.</p>
                     </div>
                 </div>
             </div>
