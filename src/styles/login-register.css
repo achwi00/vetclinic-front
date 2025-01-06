@@ -130,3 +130,21 @@
 .log-register-message-holder a:hover{
     text-decoration: underline;
 }
+.messageHolder{
+    width: 80%;
+    height: 20%;
+}
+.messageHolder h1{
+    font-size: 3vh;
+}
+.messageHolder p{
+    font-weight: normal;
+}
+.messageHolder a{
+    padding-bottom: 0;
+    color: var(--lively-pink);
+    font-weight: bold;
+}
+.messageHolder a:hover{
+    text-decoration: underline;
+}
