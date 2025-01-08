@@ -4,7 +4,7 @@ import RoundButton from "./RoundButton";
 
 function MainBoard(){
     return(
-        <div className="main">
+        <div className="main"  id="about-us">
             <div className="centring-content">
                 <div id="cat-holder">
                     <img src={"../group.svg"} alt={"cat"}/>

@@ -13,7 +13,7 @@ function ServiceBoard(){
     ]
     return(
         <div className="main">
-            <div className="centring-content-column">
+            <div className="centring-content-column" id="services">
                 <div>
                     <h1>Learn more about our services.</h1>
                     <h2>We have everything your peace of mind and your pet's health needs.</h2>
