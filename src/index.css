@@ -125,3 +125,6 @@ h2{
   flex-direction: row;
   overflow: hidden;
 }
+#interactive-contacts{
+  color: var(--violet-pink);
+}

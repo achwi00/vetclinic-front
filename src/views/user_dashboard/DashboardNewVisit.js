@@ -12,6 +12,7 @@ function DashboardNewVisit(){
     const [view, setView] = useState("form");
     const [formData, setFormData] = useState(null);
     const [visits, setVisits] = useState();
+    const [isHovered, setIsHovered] = useState(false);
     let savedPet;
 
     const buttons = [
@@ -99,14 +100,19 @@ function DashboardNewVisit(){
                                     />
 
                                 </div>
-                                <div className="choice right">
+                                <div className="choice right" id="contacts-show" onMouseEnter={() => setIsHovered(true)} // Show on hover
+                                     onMouseLeave={() => setIsHovered(false)}>
                                     <h3>For Your group</h3>
                                     <IconDisplayer
                                         iconName="group"
                                         styleClass="service-icon"
                                     />
                                     <p>Book a visit for Your pet group.</p>
-                                    {/*<p>Contact us at: +00 000 000 or clinic@meow.com</p>*/}
+                                    {isHovered && (
+                                        <p id="interactive-contacts">
+                                            Contact us at: +00 000 000 or clinic@meow.com
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>
