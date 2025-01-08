@@ -15,7 +15,7 @@ function MainBoard(){
                     <div id="learn-more-holder">
                         <RoundButton
                             label='LEARN MORE'
-                            href='#'
+                            href='#about-us'
                             styleClass="learn-more-btn"
                         />
                     </div>

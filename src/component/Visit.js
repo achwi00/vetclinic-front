@@ -1,10 +1,11 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import IconDisplayer from "./IconDisplayer";
 import {UserContext} from "../UserContext";
 import '../../src/styles/visit.css'
 
 function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, iconClass, type, description}) {
     const {user} = useContext(UserContext);
+    const [localType, setLocalType] = useState(type);
     const handleBooking = async () => {
         console.log("Booking visit...");
         console.log(user.email)
@@ -29,10 +30,12 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
 
             const result = response.text();
             console.log("Visit booked successfully:", result);
+            setLocalType("successBooking");
 
             // Optional: Handle UI updates or notifications here
         } catch (error) {
             console.error("Error booking visit:", error);
+            setLocalType("errorBooking")
         }
 
     };
@@ -56,10 +59,12 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
 
             const result = response.text();
             console.log("Visit cancelled successfully:", result);
+            setLocalType("successCancelling");
 
             // Optional: Handle UI updates or notifications here
         } catch (error) {
             console.error("Error booking visit:", error);
+            setLocalType("errorCancelling");
         }
     };
     return(
@@ -75,25 +80,37 @@ function Visit({id, date, time, vetName, vetSurname, petName, classStyle, icon, 
                        styleClass={iconClass}
                    />
                    <div className="visit-info-holder">
-                       {type === "completed" &&
+                       {localType === "completed" &&
                        <p>{petName}</p>
                        }
                        <p>{vetName} {vetSurname}</p>
                    </div>
                </div>
                 <div className="inner-right-visit">
-                    {type === "free" && (
+                    {localType === "free" && (
                         <button className="btn book-cancel-btn"
                         onClick={handleBooking}
                         >book</button>
                     )}
-                    {type === "booked" && (
+                    {localType === "booked" && (
                         <button className="btn book-cancel-btn"
                                 onClick={handleCancel}
                         >cancel</button>
                     )}
-                    {type === "others" &&
+                    {localType === "others" &&
                         <p>{description}</p>
+                    }
+                    {localType === "successBooking" &&
+                        <p>Booked the visit.</p>
+                    }
+                    {localType === "errorBooking" &&
+                        <p>Error booking visit.</p>
+                    }
+                    {localType === "successCancelling" &&
+                        <p>Cancelled visit.</p>
+                    }
+                    {localType === "errorCancelling" &&
+                        <p>Error cancelling, retry.</p>
                     }
                 </div>
             </div>
